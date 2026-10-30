@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070914">
+<title>Feliz cumpleaños, Esme</title>
+<style>
+:root{--ink:#f4efff;--soft:#c9c3dc;--violet:#c6a7ff;--blue:#9ecbff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:#070914;color:var(--ink);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-3}
+.space{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 20% 25%,rgba(94,55,157,.27),transparent 42%),radial-gradient(ellipse at 80% 72%,rgba(38,82,154,.22),transparent 43%),radial-gradient(ellipse at 50% 50%,transparent 20%,rgba(4,5,16,.65) 100%)}
+.nebula{position:fixed;inset:-20%;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 25% 45%,rgba(111,62,190,.20),transparent 34%),radial-gradient(ellipse at 75% 58%,rgba(54,117,205,.18),transparent 36%);filter:blur(35px);animation:nebulaMove 26s ease-in-out infinite alternate}
+@keyframes nebulaMove{to{transform:translate(-5%,4%) scale(1.18) rotate(9deg)}}
+.aurora{position:fixed;inset:-30%;z-index:-1;pointer-events:none;background:conic-gradient(from 130deg at 50% 50%,transparent 0deg,rgba(111,83,183,.06) 55deg,transparent 110deg,rgba(75,139,207,.06) 190deg,transparent 260deg);filter:blur(45px);animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(4%,2%) rotate(12deg) scale(1.08)}}
+main{width:min(760px,88%);margin:auto}
+.intro{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 0}
+.kicker{font:10px Arial,sans-serif;letter-spacing:5px;text-transform:uppercase;color:#b8c9f2;opacity:.85}
+h1{font-weight:400;font-size:clamp(52px,11vw,100px);line-height:.98;letter-spacing:-3px;margin:26px 0 22px;background:linear-gradient(120deg,#fff 15%,#d8c5ff 55%,#a9d5ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro .sub{font-size:clamp(16px,2.5vw,20px);color:#c9c2df;max-width:500px;line-height:1.8;margin:0}
+.scroll{margin-top:64px;color:#a99ac9;font:10px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase}
+.scroll:after{content:"";display:block;width:1px;height:48px;background:linear-gradient(#bba4ef,transparent);margin:17px auto 0}
+.letter{padding:70px 0 110px;position:relative}
+.letter:before{content:"";display:block;width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--violet),transparent);margin:0 auto 55px}
+.salute{font-size:clamp(24px,4vw,31px);color:#eee7ff;font-style:italic;margin-bottom:35px}
+.letter p{font-size:clamp(17px,2.3vw,20px);line-height:2.05;color:var(--soft);margin:0 0 25px;text-align:left}
+.letter .emphasis{color:#eee5ff}
+.signoff{margin-top:48px!important;color:#d9c9ff!important;font-style:italic;font-size:24px!important}
+.closing{min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 0 100px}
+.closing .line{width:100px;height:1px;background:linear-gradient(90deg,transparent,var(--violet),transparent);margin-bottom:42px}
+.closing p{max-width:650px;font-size:clamp(26px,5vw,43px);line-height:1.55;color:#f0eaff;margin:0;text-shadow:0 0 35px rgba(174,142,255,.18)}
+.cake-area{margin-top:52px;display:flex;flex-direction:column;align-items:center;gap:17px}
+.cake{font-size:clamp(68px,13vw,102px);filter:drop-shadow(0 0 25px rgba(190,151,255,.38));animation:cakeFloat 3s ease-in-out infinite}
+@keyframes cakeFloat{50%{transform:translateY(-9px)}}
+.candle-hint{font:11px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#c8bce8}
+.blow{border:1px solid rgba(207,184,255,.55);background:rgba(116,82,173,.2);color:#f4edff;border-radius:999px;padding:14px 25px;font:12px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:.25s}
+.blow:hover{background:rgba(150,111,220,.35);box-shadow:0 0 28px rgba(173,135,255,.25);transform:translateY(-2px)}
+.blank-reveal{display:none;width:min(300px,75vw);height:180px;margin-top:20px;border:1px dashed rgba(203,181,255,.3);border-radius:18px;background:rgba(12,12,31,.28);padding:8px}
+.blank-reveal img{width:100%;height:140px;object-fit:contain}
+.blank-reveal.show{display:block;animation:fadeIn .8s ease both}
+.blank-reveal p{margin:0;color:white;text-align:center;font:16px Arial,sans-serif}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+footer{text-align:center;padding:0 15px 38px;color:#77738d;font:10px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="space"></div>
+<div class="nebula"></div>
+<div class="aurora"></div>
+
+<main>
+<header class="intro">
+<div class="kicker">Un deseo sincero para ti</div>
+<h1>Feliz<br>cumpleaños,<br>Esme.</h1>
+<p class="sub">Hay personas a las que uno siempre les desea cosas bonitas, incluso cuando la vida toma caminos distintos.</p>
+<div class="scroll">Sigue leyendo</div>
+</header>
+
+<article class="letter">
+<div class="salute">Esme,</div>
+<p>Quería tomarme un momento para desearte un muy feliz cumpleaños. De verdad, me hace muy feliz saber que sigues avanzando, que continúas cumpliendo tus objetivos y que poco a poco vas construyendo todo aquello que quieres para tu vida.</p>
+<p>Espero que sigas así, con esa fuerza que tienes para perseguir tus metas. Sé que no todos los días son fáciles y que, en el camino, aparecen problemas, dudas y momentos que pueden hacerte sentir que todo cuesta un poco más. Aun así, deseo que nunca pierdas las ganas de intentarlo, que confíes en ti y que recuerdes de todo lo que eres capaz.</p>
+<p class="emphasis">A pesar de los problemas, de la distancia o de cómo terminaron las cosas entre nosotros, siempre me va a alegrar saber que estás bien. Que te pasan cosas bonitas, que consigues lo que te propones y que encuentras motivos para sonreír. No hace falta que todo haya salido como alguna vez imaginamos para poder desearte lo mejor de corazón.</p>
+<p>Ojalá este nuevo año te regale experiencias que te hagan crecer, personas que te quieran bonito, oportunidades que te acerquen a tus sueños y mucha tranquilidad. Que puedas celebrar cada logro, incluso esos que parecen pequeños, porque también son parte de todo lo que estás consiguiendo.</p>
+<p>Y si alguna vez las cosas se ponen difíciles, espero que tengas presente que un mal momento no define tu historia ni todo lo que puedes llegar a ser. Sigue apostando por ti, por tus planes y por esa vida que quieres construir. Me alegra verte avanzar, y siempre voy a desear que te vaya bien.</p>
+<p>Y bueno, quién sabe, quizá algún día nos volvamos a cruzar y nos toque compartir unas risas como antes, hablar de cualquier tontería y pasarla bien. Sería bonito.</p>
+<p>Y quiero que sepas que no hago esto con la intención de conseguir algo, ni espero que cambie nada entre nosotros. Simplemente quería saludarte, felicitarte en tu día y desearte cosas buenas, porque de verdad me alegra saber que estás bien.</p>
+<p class="signoff">Con mucho cariño.</p>
+</article>
+
+<section class="closing">
+<div class="line"></div>
+<p>No dejes que nada apague ese brillo que tienes en tus ojos, feliz cumpleaños Esme.</p>
+<div class="cake-area">
+<div class="cake" aria-label="Torta de cumpleaños">🎂</div>
+<div class="candle-hint">Pide un deseo y sopla la vela</div>
+<button class="blow" id="blowButton" type="button">Sopla la vela</button>
+<div class="blank-reveal" id="blankReveal">
+<img src="fotos/foto.jpg" alt="Imagen">
+<p>feliz cumpleaños 🖕</p>
+</div>
+</div>
+</section>
+</main>
+
+<footer>Me lo saludas al Nill.</footer>
+
+<script>
+(()=>{
+const canvas=document.getElementById('stars');
+const ctx=canvas.getContext('2d');
+
+let w,h,stars=[],shootingStars=[];
+
+function resize(){
+const d=Math.min(devicePixelRatio||1,2);
+
+w=canvas.width=innerWidth*d;
+h=canvas.height=innerHeight*d;
+
+canvas.style.width=innerWidth+'px';
+canvas.style.height=innerHeight+'px';
+
+ctx.setTransform(1,0,0,1,0,0);
+
+stars=Array.from({length:Math.min(900,Math.floor(innerWidth*1.5))},()=>({
+x:Math.random()*w,
+y:Math.random()*h,
+r:Math.random()*1.7+.3,
+a:Math.random()*.8+.2,
+phase:Math.random()*6.28,
+speed:Math.random()*.025+.003,
+vx:(Math.random()-.5)*.25,
+vy:Math.random()*.25+.04
+}));
+}
+
+function createShootingStar(){
+shootingStars.push({
+x:Math.random()*w,
+y:Math.random()*h*.55,
+length:Math.random()*100+80,
+speed:Math.random()*9+7,
+life:0,
+maxLife:Math.random()*35+35,
+angle:Math.PI/4
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,w,h);
+
+// Estrellas normales
+for(const s of stars){
+s.phase+=s.speed;
+s.x+=s.vx;
+s.y+=s.vy;
+
+if(s.y>h){s.y=0;s.x=Math.random()*w;}
+if(s.x>w)s.x=0;
+if(s.x<0)s.x=w;
+
+ctx.beginPath();
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+ctx.fillStyle=`rgba(235,230,255,${s.a*(.6+.4*Math.sin(s.phase))})`;
+ctx.fill();
+}
+
+// Estrellas fugaces
+if(Math.random()<0.025 && shootingStars.length<4){
+createShootingStar();
+}
+
+for(let i=shootingStars.length-1;i>=0;i--){
+const s=shootingStars[i];
+
+s.x+=Math.cos(s.angle)*s.speed;
+s.y+=Math.sin(s.angle)*s.speed;
+s.life++;
+
+const opacity=1-s.life/s.maxLife;
+
+const tailX=s.x-Math.cos(s.angle)*s.length;
+const tailY=s.y-Math.sin(s.angle)*s.length;
+
+const gradient=ctx.createLinearGradient(
+s.x,s.y,tailX,tailY
+);
+
+gradient.addColorStop(0,`rgba(255,255,255,${opacity})`);
+gradient.addColorStop(.3,`rgba(180,190,255,${opacity*.7})`);
+gradient.addColorStop(1,'rgba(150,120,255,0)');
+
+ctx.beginPath();
+ctx.moveTo(s.x,s.y);
+ctx.lineTo(tailX,tailY);
+ctx.strokeStyle=gradient;
+ctx.lineWidth=2;
+ctx.stroke();
+
+// Brillo de la punta
+ctx.beginPath();
+ctx.arc(s.x,s.y,2.5,0,Math.PI*2);
+ctx.fillStyle=`rgba(255,255,255,${opacity})`;
+ctx.fill();
+
+if(s.life>=s.maxLife || s.x>w+100 || s.y>h+100){
+shootingStars.splice(i,1);
+}
+}
+
+requestAnimationFrame(draw);
+}
+
+addEventListener('resize',resize);
+resize();
+draw();
+})();
+
+document.getElementById('blowButton').addEventListener('click',function(){
+document.getElementById('blankReveal').classList.add('show');
+this.textContent='¡Deseo pedido!';
+this.disabled=true;
+});
+</script>
+</body>
+</html>
