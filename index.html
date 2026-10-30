@@ -1,18 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070914">
-<title>Feliz cumpleaños, Esme</title>
+<meta name="theme-color" content="#090b16">
+<title>Para Esme — Un deseo en tu día</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --ink: #f4efff;
-  --soft: #c9c3dc;
-  --violet: #c6a7ff;
-  --blue: #9ecbff;
+  --ivory: #f2eee8;
+  --muted: #c3bdc9;
+  --gold: #d6bd91;
+  --night: #090b16;
 }
 
 * {
@@ -25,14 +27,14 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
-  background: #070914;
-  color: var(--ink);
-  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--night);
+  color: var(--ivory);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
   overflow-x: hidden;
 }
 
-#stars {
+#sky {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -41,190 +43,227 @@ body {
   pointer-events: none;
 }
 
-.space, .nebula, .aurora {
+.ambient {
   position: fixed;
   inset: 0;
-  pointer-events: none;
-}
-
-.space {
   z-index: 1;
+  pointer-events: none;
   background:
-    radial-gradient(ellipse at 20% 25%, rgba(94,55,157,.27), transparent 42%),
-    radial-gradient(ellipse at 80% 72%, rgba(38,82,154,.22), transparent 43%),
-    radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(4,5,16,.65) 100%);
+    radial-gradient(ellipse at 18% 18%, rgba(104,75,145,.23), transparent 38%),
+    radial-gradient(ellipse at 82% 68%, rgba(49,82,129,.19), transparent 42%),
+    linear-gradient(145deg, rgba(9,11,22,.25), rgba(9,11,22,.88));
 }
 
-.nebula {
-  inset: -20%;
-  z-index: 2;
-  background:
-    radial-gradient(ellipse at 25% 45%, rgba(111,62,190,.20), transparent 34%),
-    radial-gradient(ellipse at 75% 58%, rgba(54,117,205,.18), transparent 36%);
-  filter: blur(35px);
-  animation: nebulaMove 26s ease-in-out infinite alternate;
+.glow {
+  position: fixed;
+  width: 70vw;
+  height: 70vw;
+  max-width: 850px;
+  max-height: 850px;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(108,82,157,.12), transparent 68%);
+  filter: blur(20px);
+  animation: breathe 12s ease-in-out infinite alternate;
 }
 
-@keyframes nebulaMove {
+@keyframes breathe {
   to {
-    transform: translate(-5%,4%) scale(1.18) rotate(9deg);
-  }
-}
-
-.aurora {
-  inset: -30%;
-  z-index: 3;
-  background: conic-gradient(
-    from 130deg at 50% 50%,
-    transparent 0deg,
-    rgba(111,83,183,.06) 55deg,
-    transparent 110deg,
-    rgba(75,139,207,.06) 190deg,
-    transparent 260deg
-  );
-  filter: blur(45px);
-  animation: drift 22s ease-in-out infinite alternate;
-}
-
-@keyframes drift {
-  to {
-    transform: translate(4%,2%) rotate(12deg) scale(1.08);
+    transform: translate(-48%,-53%) scale(1.18);
+    opacity: .65;
   }
 }
 
 main, footer {
   position: relative;
-  z-index: 4;
+  z-index: 2;
 }
 
-main {
-  width: min(760px,88%);
+.wrap {
+  width: min(790px, calc(100% - 44px));
   margin: auto;
 }
 
-.intro {
+/* PORTADA */
+
+.hero {
   min-height: 100svh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 60px 0;
-}
-
-.kicker {
-  font: 10px Arial,sans-serif;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: #b8c9f2;
-  opacity: .85;
-}
-
-h1 {
-  font-weight: 400;
-  font-size: clamp(52px,11vw,100px);
-  line-height: .98;
-  letter-spacing: -3px;
-  margin: 26px 0 22px;
-  background: linear-gradient(120deg,#fff 15%,#d8c5ff 55%,#a9d5ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.intro .sub {
-  font-size: clamp(16px,2.5vw,20px);
-  color: #c9c2df;
-  max-width: 500px;
-  line-height: 1.8;
-  margin: 0;
-}
-
-.scroll {
-  margin-top: 64px;
-  color: #a99ac9;
-  font: 10px Arial,sans-serif;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.scroll:after {
-  content: "";
-  display: block;
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(#bba4ef,transparent);
-  margin: 17px auto 0;
-}
-
-.letter {
-  padding: 70px 0 110px;
+  padding: 90px 0 75px;
   position: relative;
 }
 
-.letter:before {
-  content: "";
-  display: block;
-  width: 70px;
-  height: 1px;
-  background: linear-gradient(90deg,transparent,var(--violet),transparent);
-  margin: 0 auto 55px;
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--gold);
 }
 
-.salute {
-  font-size: clamp(24px,4vw,31px);
-  color: #eee7ff;
+.eyebrow:before,
+.eyebrow:after {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin: 0 15px;
+  opacity: .65;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(66px,12vw,126px);
+  line-height: .82;
+  letter-spacing: -.045em;
+  margin: 37px 0 28px;
+}
+
+.hero h1 span {
+  display: block;
+  color: #d8c9e9;
   font-style: italic;
-  margin-bottom: 35px;
+  font-weight: 300;
+}
+
+.hero-sub {
+  max-width: 440px;
+  margin: auto;
+  color: #c8c3d0;
+  font-size: 14px;
+  line-height: 2;
+  letter-spacing: .025em;
+}
+
+.hero-bottom {
+  position: absolute;
+  bottom: 36px;
+  left: 0;
+  right: 0;
+  color: #aaa2b8;
+  font-size: 9px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+}
+
+.hero-bottom i {
+  display: block;
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(var(--gold),transparent);
+  margin: 17px auto 0;
+}
+
+/* CARTA */
+
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 48px;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+}
+
+.section-rule:before,
+.section-rule:after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(90deg,transparent,rgba(214,189,145,.5));
+  flex: 1;
+}
+
+.section-rule:after {
+  transform: scaleX(-1);
+}
+
+.letter {
+  padding: 70px 0 95px;
+}
+
+.salutation {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 35px;
+  font-style: italic;
+  color: #e7d9ed;
+  margin: 0 0 28px;
 }
 
 .letter p {
-  font-size: clamp(17px,2.3vw,20px);
-  line-height: 2.05;
-  color: var(--soft);
-  margin: 0 0 25px;
-  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px,2.65vw,24px);
+  line-height: 1.78;
+  letter-spacing: .005em;
+  color: #d0cbd5;
+  margin: 0 0 27px;
 }
 
-.letter .emphasis {
-  color: #eee5ff;
+.letter p.lead:first-letter {
+  font-size: 3.1em;
+  float: left;
+  line-height: .78;
+  padding: 9px 9px 0 0;
+  color: var(--gold);
 }
 
-.signoff {
-  margin-top: 48px !important;
-  color: #d9c9ff !important;
+.letter .highlight {
+  color: #eee4f1;
+}
+
+.letter .quiet {
+  color: #b9b2c2;
   font-style: italic;
-  font-size: 24px !important;
 }
+
+.signature {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 30px;
+  color: var(--gold);
+  margin-top: 45px;
+}
+
+/* CIERRE */
 
 .closing {
-  min-height: 72vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding: 90px 0 115px;
   text-align: center;
-  padding: 70px 0 100px;
 }
 
-.closing .line {
-  width: 100px;
-  height: 1px;
-  background: linear-gradient(90deg,transparent,var(--violet),transparent);
-  margin-bottom: 42px;
+.closing .ornament {
+  font-size: 22px;
+  color: var(--gold);
+  letter-spacing: .5em;
+  margin-bottom: 30px;
 }
 
-.closing p {
-  max-width: 650px;
-  font-size: clamp(26px,5vw,43px);
-  line-height: 1.55;
-  color: #f0eaff;
-  margin: 0;
-  text-shadow: 0 0 35px rgba(174,142,255,.18);
+.closing h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(34px,6vw,58px);
+  line-height: 1.25;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #f0e9f1;
 }
 
-.cake-area {
-  margin-top: 52px;
+.closing h2 em {
+  color: #d7c2e8;
+}
+
+.cake-zone {
+  margin: 65px auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -232,76 +271,76 @@ h1 {
 }
 
 .cake {
-  font-size: clamp(68px,13vw,102px);
-  filter: drop-shadow(0 0 25px rgba(190,151,255,.38));
-  animation: cakeFloat 3s ease-in-out infinite;
+  font-size: 72px;
+  filter: drop-shadow(0 0 22px rgba(214,189,145,.25));
+  animation: float 4s ease-in-out infinite;
 }
 
-@keyframes cakeFloat {
+@keyframes float {
   50% {
     transform: translateY(-9px);
   }
 }
 
-.candle-hint {
-  font: 11px Arial,sans-serif;
-  letter-spacing: 2px;
+.hint {
+  font-size: 9px;
+  letter-spacing: .3em;
   text-transform: uppercase;
-  color: #c8bce8;
+  color: #bcb2c8;
 }
 
-.blow {
-  border: 1px solid rgba(207,184,255,.55);
-  background: rgba(116,82,173,.2);
-  color: #f4edff;
-  border-radius: 999px;
-  padding: 14px 25px;
-  font: 12px Arial,sans-serif;
-  letter-spacing: 2px;
+button {
+  font: 400 10px 'DM Sans',sans-serif;
+  letter-spacing: .24em;
   text-transform: uppercase;
+  color: var(--ivory);
+  background: transparent;
+  border: 1px solid rgba(214,189,145,.65);
+  padding: 16px 27px;
+  border-radius: 2px;
   cursor: pointer;
-  transition: .25s;
+  transition: .3s;
 }
 
-.blow:hover {
-  background: rgba(150,111,220,.35);
-  box-shadow: 0 0 28px rgba(173,135,255,.25);
+button:hover {
+  background: rgba(214,189,145,.12);
+  border-color: var(--gold);
   transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,.2);
 }
 
-.blank-reveal {
+.reveal {
   display: none;
-  width: min(300px,75vw);
-  height: 180px;
-  margin-top: 20px;
-  border: 1px dashed rgba(203,181,255,.3);
-  border-radius: 18px;
-  background: rgba(12,12,31,.65);
-  padding: 8px;
+  margin-top: 17px;
+  width: min(330px,80vw);
+  padding: 12px;
+  border: 1px solid rgba(214,189,145,.35);
+  background: rgba(14,16,29,.78);
+  animation: appear .7s ease both;
 }
 
-.blank-reveal img {
-  width: 100%;
-  height: 140px;
-  object-fit: contain;
-}
-
-.blank-reveal p {
-  margin: 0;
-  color: white;
-  text-align: center;
-  font: 16px Arial,sans-serif;
-}
-
-.blank-reveal.show {
+.reveal.show {
   display: block;
-  animation: fadeIn .8s ease both;
 }
 
-@keyframes fadeIn {
+.reveal img {
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+  display: block;
+}
+
+.reveal p {
+  font-family: 'Cormorant Garamond',serif;
+  font-size: 24px;
+  color: #f1e9f4;
+  margin: 10px 0 3px;
+}
+
+@keyframes appear {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -311,11 +350,39 @@ h1 {
 
 footer {
   text-align: center;
-  padding: 0 15px 38px;
-  color: #aaa3c2;
-  font: 10px Arial,sans-serif;
-  letter-spacing: 3px;
+  padding: 0 20px 35px;
+  color: #a69eb0;
+  font-size: 9px;
+  letter-spacing: .27em;
   text-transform: uppercase;
+}
+
+@media(max-width:600px) {
+  .wrap {
+    width: calc(100% - 42px);
+  }
+
+  .hero {
+    min-height: 94svh;
+  }
+
+  .eyebrow:before,
+  .eyebrow:after {
+    width: 17px;
+    margin: 0 8px;
+  }
+
+  .letter {
+    padding-top: 45px;
+  }
+
+  .letter p {
+    line-height: 1.72;
+  }
+
+  .closing {
+    padding-top: 60px;
+  }
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -329,112 +396,157 @@ footer {
 
 <body>
 
-<canvas id="stars" aria-hidden="true"></canvas>
-
-<div class="space"></div>
-<div class="nebula"></div>
-<div class="aurora"></div>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="ambient"></div>
+<div class="glow"></div>
 
 <main>
 
-<header class="intro">
-  <div class="kicker">Un deseo sincero para ti</div>
+<section class="hero wrap">
+  <div>
+    <div class="eyebrow">Una fecha para recordar</div>
 
-  <h1>Feliz<br>cumpleaños,<br>Esme.</h1>
+    <h1>
+      Feliz
+      <span>cumpleaños,</span>
+      Esme.
+    </h1>
 
-  <p class="sub">
-    Hay personas a las que uno siempre les desea cosas bonitas,
-    incluso cuando la vida toma caminos distintos.
-  </p>
+    <p class="hero-sub">
+      Hay palabras que no buscan cambiar nada.
+      A veces, sencillamente, nacen del cariño y del deseo
+      sincero de que a alguien le vaya bien.
+    </p>
+  </div>
 
-  <div class="scroll">Sigue leyendo</div>
-</header>
+  <div class="hero-bottom">
+    Una pequeña carta para ti
+    <i></i>
+  </div>
+</section>
 
-<article class="letter">
+<article class="letter wrap">
 
-  <div class="salute">Esme,</div>
+  <div class="section-rule">
+    Con aprecio y buenos deseos
+  </div>
 
-  <p>
-    Quería tomarme un momento para desearte un muy feliz cumpleaños.
-    De verdad, me hace muy feliz saber que sigues avanzando, que
-    continúas cumpliendo tus objetivos y que poco a poco vas
-    construyendo todo aquello que quieres para tu vida.
-  </p>
+  <h2 class="salutation">Esme:</h2>
 
-  <p>
-    Espero que sigas así, con esa fuerza que tienes para perseguir
-    tus metas. Sé que no todos los días son fáciles y que, en el
-    camino, aparecen problemas, dudas y momentos que pueden hacerte
-    sentir que todo cuesta un poco más. Aun así, deseo que nunca
-    pierdas las ganas de intentarlo, que confíes en ti y que
-    recuerdes de todo lo que eres capaz.
-  </p>
-
-  <p class="emphasis">
-    A pesar de los problemas, de la distancia o de cómo terminaron
-    las cosas entre nosotros, siempre me va a alegrar saber que
-    estás bien. Que te pasan cosas bonitas, que consigues lo que
-    te propones y que encuentras motivos para sonreír. No hace
-    falta que todo haya salido como alguna vez imaginamos para
-    poder desearte lo mejor de corazón.
-  </p>
-
-  <p>
-    Ojalá este nuevo año te regale experiencias que te hagan crecer,
-    personas que te quieran bonito, oportunidades que te acerquen
-    a tus sueños y mucha tranquilidad. Que puedas celebrar cada
-    logro, incluso esos que parecen pequeños, porque también son
-    parte de todo lo que estás consiguiendo.
+  <p class="lead">
+    Hoy quería hacer una pausa entre tantas cosas y dedicarte
+    unas líneas. No quería dejar pasar tu cumpleaños como si
+    fuera un día cualquiera, porque, más allá del tiempo que
+    haya transcurrido y de las circunstancias que nos hayan
+    llevado por caminos distintos, me parece importante
+    desearte de corazón que tengas un día bonito y un año
+    lleno de motivos para sentirte orgullosa de ti misma.
   </p>
 
   <p>
-    Y si alguna vez las cosas se ponen difíciles, espero que tengas
-    presente que un mal momento no define tu historia ni todo lo
-    que puedes llegar a ser. Sigue apostando por ti, por tus planes
-    y por esa vida que quieres construir. Me alegra verte avanzar,
-    y siempre voy a desear que te vaya bien.
+    Espero que esta nueva vuelta al sol llegue acompañada de
+    tranquilidad, salud, oportunidades y personas que sumen
+    cosas buenas a tu vida. Que puedas seguir avanzando hacia
+    aquello que te propones, que tus esfuerzos encuentren
+    recompensa y que tengas la paciencia necesaria para
+    comprender que no todo logro llega de inmediato. Hay
+    procesos que toman tiempo, decisiones que requieren
+    valentía y sueños que se construyen paso a paso.
+  </p>
+
+  <p class="highlight">
+    Deseo que nunca pierdas la confianza en tus capacidades.
+    Que cuando aparezcan días complicados puedas recordar
+    todo lo que ya has superado y encuentres razones para
+    continuar. No permitas que un tropiezo te haga olvidar
+    cuánto has avanzado. A veces uno no alcanza a reconocer
+    su propio crecimiento hasta que mira hacia atrás y
+    descubre todo el camino que recorrió.
   </p>
 
   <p>
-    Y bueno, quién sabe, quizá algún día nos volvamos a cruzar y
-    nos toque compartir unas risas como antes, hablar de cualquier
-    tontería y pasarla bien. Sería bonito.
+    También espero que la vida te sorprenda de maneras
+    agradables: con conversaciones que te hagan bien,
+    oportunidades inesperadas, momentos sencillos que
+    terminen siendo memorables y personas con quienes puedas
+    ser tú misma. Ojalá tengas muchos motivos para reír,
+    nuevos lugares por conocer y experiencias que te enseñen
+    algo valioso sin quitarte la tranquilidad.
   </p>
 
   <p>
-    Y quiero que sepas que no hago esto con la intención de conseguir
-    algo, ni espero que cambie nada entre nosotros. Simplemente
-    quería saludarte, felicitarte en tu día y desearte cosas buenas,
-    porque de verdad me alegra saber que estás bien.
+    Respecto a nosotros, sé que las cosas no siempre resultan
+    como uno las imaginó. Hubo momentos, circunstancias y
+    también dificultades que forman parte de nuestra historia.
+    No escribo estas palabras para volver sobre aquello,
+    buscar explicaciones ni modificar lo que hoy es.
+    Simplemente creo que se puede mirar atrás con serenidad,
+    reconocer lo vivido y, aun así, desearle cosas buenas
+    a alguien que en algún momento fue importante.
   </p>
 
-  <p class="signoff">Con mucho cariño.</p>
+  <p class="highlight">
+    Me alegra saber que estás bien y que continúas con tus
+    cosas. De verdad espero que sigas cumpliendo tus objetivos,
+    que te vaya bien en lo que emprendas y que cada decisión
+    te acerque a la vida que quieres tener. Que tengas la
+    fortaleza para elegir lo que te haga feliz y la calma
+    para no exigirte tener todas las respuestas ahora mismo.
+  </p>
+
+  <p>
+    Quizá algún día la vida vuelva a cruzar nuestros caminos.
+    Tal vez podamos saludarnos, conversar un rato y recordar
+    alguna anécdota con una sonrisa, como quien se encuentra
+    con una parte de su historia y la mira con cariño.
+    Y si eso no sucede, también está bien. Hay buenos deseos
+    que no necesitan una respuesta ni un destino concreto
+    para ser sinceros.
+  </p>
+
+  <p class="quiet">
+    No espero nada de este mensaje ni pretendo que cambie
+    algo entre nosotros. No hay una intención escondida
+    detrás de estas líneas. Solo quería tomarme el tiempo
+    de saludarte, reconocer este día y expresarte un deseo
+    genuino: que estés bien, que encuentres motivos para
+    sonreír y que la vida te trate bonito.
+  </p>
+
+  <p>
+    Disfruta tu día, celebra lo que has conseguido y recibe
+    con ilusión todo lo que todavía está por venir. Ojalá
+    este nuevo año te encuentre más segura de ti, más cerca
+    de tus metas y rodeada de aquello que te hace bien.
+  </p>
+
+  <div class="signature">
+    Con cariño, y mis mejores deseos.
+  </div>
 
 </article>
 
-<section class="closing">
+<section class="closing wrap">
 
-  <div class="line"></div>
+  <div class="ornament">✧　✦　✧</div>
 
-  <p>
-    No dejes que nada apague ese brillo que tienes en tus ojos,
-    feliz cumpleaños Esme.
-  </p>
+  <h2>
+    No dejes que nada apague ese brillo que tienes en tus ojos.
+    <em>Feliz cumpleaños, Esme.</em>
+  </h2>
 
-  <div class="cake-area">
+  <div class="cake-zone">
 
     <div class="cake">🎂</div>
 
-    <div class="candle-hint">
-      Pide un deseo y sopla la vela
-    </div>
+    <div class="hint">Pide un deseo</div>
 
-    <button class="blow" id="blowButton" type="button">
+    <button id="wish" type="button">
       Sopla la vela
     </button>
 
-    <div class="blank-reveal" id="blankReveal">
-      <img src="foto/foto.jpg" alt="Imagen">
+    <div class="reveal" id="reveal">
+      <img src="foto/foto.jpg" alt="Sorpresa de cumpleaños">
       <p>feliz cumpleaños 🖕</p>
     </div>
 
@@ -444,157 +556,122 @@ footer {
 
 </main>
 
-<footer>Me lo saludas al Nill.</footer>
+<footer>
+  Me lo saludas al Nill.
+</footer>
 
 <script>
 (() => {
 
-  const canvas = document.getElementById('stars');
-  const ctx = canvas.getContext('2d');
+  const c = document.getElementById('sky');
+  const x = c.getContext('2d');
 
   let w, h;
-  let stars = [];
-  let shootingStars = [];
+  let dots = [];
+  let meteors = [];
 
-  function resize() {
+  function size() {
 
     const d = Math.min(devicePixelRatio || 1, 2);
 
-    w = canvas.width = innerWidth * d;
-    h = canvas.height = innerHeight * d;
+    w = c.width = innerWidth * d;
+    h = c.height = innerHeight * d;
 
-    canvas.style.width = innerWidth + 'px';
-    canvas.style.height = innerHeight + 'px';
+    c.style.width = innerWidth + 'px';
+    c.style.height = innerHeight + 'px';
 
-    stars = Array.from(
-      { length: Math.min(900, Math.floor(innerWidth * 1.5)) },
+    dots = Array.from(
+      {length: Math.min(650, Math.floor(innerWidth * 1.15))},
       () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        r: Math.random() * 1.7 + .3,
-        a: Math.random() * .8 + .2,
-        phase: Math.random() * 6.28,
-        speed: Math.random() * .025 + .003,
-        vx: (Math.random() - .5) * .25,
-        vy: Math.random() * .25 + .04
+        r: Math.random() * 1.35 + .25,
+        a: Math.random() * .65 + .2,
+        p: Math.random() * 6.28,
+        s: Math.random() * .018 + .003
       })
     );
 
   }
 
-  function createShootingStar() {
+  function frame() {
 
-    shootingStars.push({
-      x: Math.random() * w,
-      y: Math.random() * h * .55,
-      length: Math.random() * 100 + 80,
-      speed: Math.random() * 9 + 7,
-      life: 0,
-      maxLife: Math.random() * 35 + 35,
-      angle: Math.PI / 4
-    });
+    x.clearRect(0, 0, w, h);
 
-  }
+    for (const s of dots) {
 
-  function draw() {
+      s.p += s.s;
 
-    ctx.clearRect(0, 0, w, h);
+      x.beginPath();
+      x.arc(s.x, s.y, s.r, 0, Math.PI * 2);
 
-    for (const s of stars) {
+      x.fillStyle =
+        `rgba(235,225,255,${s.a * (.65 + .35 * Math.sin(s.p))})`;
 
-      s.phase += s.speed;
-      s.x += s.vx;
-      s.y += s.vy;
-
-      if (s.y > h) {
-        s.y = 0;
-        s.x = Math.random() * w;
-      }
-
-      if (s.x > w) s.x = 0;
-      if (s.x < 0) s.x = w;
-
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-
-      ctx.fillStyle =
-        `rgba(235,230,255,${s.a * (.6 + .4 * Math.sin(s.phase))})`;
-
-      ctx.fill();
+      x.fill();
 
     }
 
-    if (Math.random() < .025 && shootingStars.length < 4) {
-      createShootingStar();
+    if (Math.random() < .018 && meteors.length < 3) {
+
+      meteors.push({
+        x: Math.random() * w,
+        y: Math.random() * h * .55,
+        v: Math.random() * 8 + 6,
+        l: Math.random() * 90 + 70,
+        t: 0
+      });
+
     }
 
-    for (let i = shootingStars.length - 1; i >= 0; i--) {
+    for (let i = meteors.length - 1; i >= 0; i--) {
 
-      const s = shootingStars[i];
+      const m = meteors[i];
 
-      s.x += Math.cos(s.angle) * s.speed;
-      s.y += Math.sin(s.angle) * s.speed;
-      s.life++;
+      m.x += m.v;
+      m.y += m.v * .55;
+      m.t++;
 
-      const opacity = 1 - s.life / s.maxLife;
+      const a = 1 - m.t / 38;
 
-      const tailX = s.x - Math.cos(s.angle) * s.length;
-      const tailY = s.y - Math.sin(s.angle) * s.length;
-
-      const gradient = ctx.createLinearGradient(
-        s.x, s.y, tailX, tailY
+      const g = x.createLinearGradient(
+        m.x, m.y,
+        m.x - m.l, m.y - m.l * .55
       );
 
-      gradient.addColorStop(
-        0, `rgba(255,255,255,${opacity})`
-      );
+      g.addColorStop(0, `rgba(255,255,255,${a})`);
+      g.addColorStop(1, 'rgba(160,140,220,0)');
 
-      gradient.addColorStop(
-        .3, `rgba(180,190,255,${opacity * .7})`
-      );
+      x.beginPath();
+      x.moveTo(m.x, m.y);
+      x.lineTo(m.x - m.l, m.y - m.l * .55);
 
-      gradient.addColorStop(1, 'rgba(150,120,255,0)');
+      x.strokeStyle = g;
+      x.lineWidth = 1.5;
+      x.stroke();
 
-      ctx.beginPath();
-      ctx.moveTo(s.x, s.y);
-      ctx.lineTo(tailX, tailY);
-
-      ctx.strokeStyle = gradient;
-      ctx.lineWidth = 2;
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, 2.5, 0, Math.PI * 2);
-
-      ctx.fillStyle = `rgba(255,255,255,${opacity})`;
-      ctx.fill();
-
-      if (
-        s.life >= s.maxLife ||
-        s.x > w + 100 ||
-        s.y > h + 100
-      ) {
-        shootingStars.splice(i, 1);
+      if (m.t > 38) {
+        meteors.splice(i, 1);
       }
 
     }
 
-    requestAnimationFrame(draw);
+    requestAnimationFrame(frame);
 
   }
 
-  addEventListener('resize', resize);
+  addEventListener('resize', size);
 
-  resize();
-  draw();
+  size();
+  frame();
 
 })();
 
-document.getElementById('blowButton').addEventListener('click', function() {
+document.getElementById('wish').addEventListener('click', function() {
 
-  document.getElementById('blankReveal').classList.add('show');
+  document.getElementById('reveal').classList.add('show');
 
-  this.textContent = '¡Deseo pedido!';
+  this.textContent = 'Deseo concedido';
   this.disabled = true;
 
 });
