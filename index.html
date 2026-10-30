@@ -1,28 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080713">
-<title>Feliz cumpleaños, Esme</title>
+<meta name="theme-color" content="#090b16">
+<title>Para Esme — Feliz cumpleaños</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #080713;
-  --purple: #a78bfa;
-  --gold: #e8c98c;
-  --white: #f7f2ff;
-  --muted: #aaa2bc;
+  --ivory: #f2eee8;
+  --muted: #c3bdc9;
+  --gold: #d6bd91;
+  --night: #090b16;
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
@@ -31,389 +26,378 @@ html {
 }
 
 body {
-  background: var(--bg);
-  color: var(--white);
+  margin: 0;
+  background: var(--night);
+  color: var(--ivory);
   font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
   overflow-x: hidden;
 }
 
-#stars {
+#sky {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: -3;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .ambient {
   position: fixed;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  filter: blur(130px);
-  opacity: .17;
+  inset: 0;
+  z-index: 1;
   pointer-events: none;
-  z-index: -2;
+  background:
+    radial-gradient(ellipse at 18% 18%, rgba(104,75,145,.23), transparent 38%),
+    radial-gradient(ellipse at 82% 68%, rgba(49,82,129,.19), transparent 42%),
+    linear-gradient(145deg, rgba(9,11,22,.25), rgba(9,11,22,.88));
 }
 
-.ambient.one {
-  background: #7144bd;
-  top: -250px;
-  left: -200px;
-}
-
-.ambient.two {
-  background: #b78b50;
-  right: -300px;
-  bottom: -250px;
-}
-
-nav {
+.glow {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 22px 8%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 20;
-  background: rgba(8,7,19,.65);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
+  width: 70vw;
+  height: 70vw;
+  max-width: 850px;
+  max-height: 850px;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(108,82,157,.12), transparent 68%);
+  filter: blur(20px);
+  animation: breathe 12s ease-in-out infinite alternate;
 }
 
-.logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 25px;
-  letter-spacing: 2px;
-  color: var(--gold);
+@keyframes breathe {
+  to {
+    transform: translate(-48%,-53%) scale(1.18);
+    opacity: .65;
+  }
 }
 
-.nav-link {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+main, footer {
+  position: relative;
+  z-index: 2;
 }
+
+.wrap {
+  width: min(790px, calc(100% - 44px));
+  margin: auto;
+}
+
+/* PORTADA */
 
 .hero {
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 120px 24px 80px;
+  padding: 90px 0 75px;
   position: relative;
 }
 
 .eyebrow {
-  color: var(--gold);
-  font-size: 11px;
-  letter-spacing: 5px;
+  font-size: 10px;
+  letter-spacing: .34em;
   text-transform: uppercase;
-  margin-bottom: 30px;
-  animation: fadeUp 1s both;
+  color: var(--gold);
+}
+
+.eyebrow:before,
+.eyebrow:after {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin: 0 15px;
+  opacity: .65;
 }
 
 .hero h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(65px, 12vw, 135px);
-  font-weight: 400;
-  line-height: .9;
-  letter-spacing: -3px;
-  animation: fadeUp 1.2s both;
+  font-weight: 300;
+  font-size: clamp(66px,12vw,126px);
+  line-height: .82;
+  letter-spacing: -.045em;
+  margin: 37px 0 28px;
 }
 
 .hero h1 span {
   display: block;
+  color: #d8c9e9;
   font-style: italic;
-  color: var(--purple);
-}
-
-.hero-subtitle {
-  color: var(--muted);
-  margin-top: 35px;
-  font-size: 14px;
-  letter-spacing: 2px;
-  animation: fadeUp 1.5s both;
-}
-
-.scroll {
-  position: absolute;
-  bottom: 35px;
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: #817991;
-  text-transform: uppercase;
-}
-
-.scroll::after {
-  content: "";
-  display: block;
-  width: 1px;
-  height: 45px;
-  margin: 15px auto 0;
-  background: linear-gradient(var(--purple), transparent);
-}
-
-section {
-  padding: 110px 22px;
-}
-
-.container {
-  max-width: 850px;
-  margin: auto;
-}
-
-.section-label {
-  text-align: center;
-  color: var(--gold);
-  font-size: 10px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  margin-bottom: 22px;
-}
-
-.section-title {
-  text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: clamp(40px, 7vw, 68px);
-  margin-bottom: 55px;
-}
-
-.intro {
-  text-align: center;
-  max-width: 650px;
-  margin: auto;
-}
-
-.intro p {
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 2;
   font-weight: 300;
 }
 
-.divider {
-  width: 70px;
+.hero-sub {
+  max-width: 440px;
+  margin: auto;
+  color: #c8c3d0;
+  font-size: 14px;
+  line-height: 2;
+  letter-spacing: .025em;
+}
+
+.hero-bottom {
+  position: absolute;
+  bottom: 36px;
+  left: 0;
+  right: 0;
+  color: #aaa2b8;
+  font-size: 9px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+}
+
+.hero-bottom i {
+  display: block;
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(var(--gold),transparent);
+  margin: 17px auto 0;
+}
+
+/* CARTA */
+
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 48px;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+}
+
+.section-rule:before,
+.section-rule:after {
+  content: "";
   height: 1px;
-  margin: 35px auto;
-  background: var(--gold);
-  opacity: .6;
+  background: linear-gradient(90deg,transparent,rgba(214,189,145,.5));
+  flex: 1;
+}
+
+.section-rule:after {
+  transform: scaleX(-1);
 }
 
 .letter {
-  background: linear-gradient(
-    145deg,
-    rgba(255,255,255,.045),
-    rgba(255,255,255,.012)
-  );
-  border: 1px solid rgba(232,201,140,.2);
-  padding: clamp(28px, 7vw, 65px);
-  position: relative;
-  box-shadow: 0 25px 90px rgba(0,0,0,.25);
+  padding: 70px 0 95px;
 }
 
-.letter::before {
-  content: "✦";
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  color: var(--gold);
-  opacity: .7;
-}
-
-.letter-date {
-  color: var(--gold);
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 35px;
-}
-
-.letter h3 {
+.salutation {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 38px;
-  font-weight: 500;
-  margin-bottom: 28px;
+  font-size: 35px;
+  font-style: italic;
+  color: #e7d9ed;
+  margin: 0 0 28px;
 }
 
 .letter p {
-  color: #c8c0d4;
-  font-size: 15px;
-  line-height: 2.1;
-  margin-bottom: 22px;
-  font-weight: 300;
-}
-
-.letter .signature {
-  color: var(--gold);
   font-family: 'Cormorant Garamond', serif;
-  font-size: 27px;
-  font-style: italic;
-  margin-top: 35px;
+  font-size: clamp(20px,2.65vw,24px);
+  line-height: 1.78;
+  letter-spacing: .005em;
+  color: #d0cbd5;
+  margin: 0 0 27px;
 }
 
-.quote-section {
+.letter p.lead:first-letter {
+  font-size: 3.1em;
+  float: left;
+  line-height: .78;
+  padding: 9px 9px 0 0;
+  color: var(--gold);
+}
+
+.letter .highlight {
+  color: #eee4f1;
+}
+
+.letter .quiet {
+  color: #b9b2c2;
+  font-style: italic;
+}
+
+.signature {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 30px;
+  color: var(--gold);
+  margin-top: 45px;
+}
+
+/* CIERRE */
+
+.closing {
+  padding: 90px 0 115px;
   text-align: center;
-  padding: 120px 25px;
 }
 
-.quote-mark {
+.closing .ornament {
+  font-size: 22px;
   color: var(--gold);
+  letter-spacing: .5em;
+  margin-bottom: 30px;
+}
+
+.closing h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 75px;
-  line-height: .7;
+  font-weight: 300;
+  font-size: clamp(34px,6vw,58px);
+  line-height: 1.25;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #f0e9f1;
 }
 
-.quote {
-  max-width: 850px;
-  margin: 25px auto;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(34px, 6vw, 62px);
-  line-height: 1.2;
-  font-style: italic;
-  color: var(--white);
+.closing h2 em {
+  color: #d7c2e8;
 }
 
-.quote span {
-  color: var(--purple);
-}
+/* RECUADRO PERSONAL */
 
-.quote-caption {
-  color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-top: 30px;
-}
-
-.thanks {
-  max-width: 780px;
-  margin: auto;
-  padding: clamp(28px, 6vw, 55px);
-  border: 1px solid rgba(167,139,250,.25);
-  background: rgba(167,139,250,.055);
+.personal-box {
+  margin: 65px auto 25px;
+  max-width: 650px;
+  padding: 38px 34px;
+  text-align: left;
+  border: 1px solid rgba(214,189,145,.35);
+  background: linear-gradient(
+    145deg,
+    rgba(214,189,145,.075),
+    rgba(108,82,157,.09),
+    rgba(9,11,22,.55)
+  );
+  box-shadow: 0 20px 65px rgba(0,0,0,.22);
   position: relative;
 }
 
-.thanks::after {
-  content: "✧";
+.personal-box:before {
+  content: "";
   position: absolute;
-  right: 25px;
-  top: 15px;
-  color: var(--purple);
-  font-size: 25px;
+  top: 0;
+  left: 34px;
+  width: 55px;
+  height: 2px;
+  background: var(--gold);
 }
 
-.thanks h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
-  font-weight: 400;
-  margin-bottom: 25px;
+.box-decoration {
   color: var(--gold);
+  font-size: 9px;
+  letter-spacing: .3em;
+  margin-bottom: 25px;
 }
 
-.thanks p {
-  color: #c8c0d4;
-  line-height: 2.1;
-  font-size: 14px;
-  font-weight: 300;
+.personal-box p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(19px,2.5vw,23px);
+  line-height: 1.8;
+  color: #ded6e4;
+  margin: 0 0 20px;
 }
 
-.cake-section {
+.personal-box .last-joke {
+  color: #e7d3b5;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.box-end {
   text-align: center;
-  padding: 120px 20px 140px;
+  color: var(--gold);
+  margin-top: 25px;
+}
+
+/* PASTEL */
+
+.cake-zone {
+  margin: 65px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
 }
 
 .cake {
-  font-size: 100px;
-  margin: 25px 0;
-  display: inline-block;
-  filter: drop-shadow(0 0 25px rgba(232,201,140,.2));
-  animation: cakeFloat 3s ease-in-out infinite;
+  font-size: 72px;
+  filter: drop-shadow(0 0 22px rgba(214,189,145,.25));
+  animation: float 4s ease-in-out infinite;
 }
 
-.cake-text {
-  color: var(--muted);
-  margin: 15px 0 30px;
-  font-size: 14px;
+@keyframes float {
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.hint {
+  font-size: 9px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: #bcb2c8;
 }
 
 button {
-  border: 1px solid rgba(232,201,140,.65);
-  color: var(--gold);
-  background: transparent;
-  padding: 16px 35px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  letter-spacing: 3px;
+  font: 400 10px 'DM Sans',sans-serif;
+  letter-spacing: .24em;
   text-transform: uppercase;
+  color: var(--ivory);
+  background: transparent;
+  border: 1px solid rgba(214,189,145,.65);
+  padding: 16px 27px;
+  border-radius: 2px;
   cursor: pointer;
   transition: .3s;
 }
 
 button:hover {
-  background: var(--gold);
-  color: #17111f;
-  box-shadow: 0 0 35px rgba(232,201,140,.2);
-  transform: translateY(-3px);
-}
-
-.surprise {
-  display: none;
-  margin-top: 35px;
-  animation: fadeUp .8s both;
-}
-
-.surprise.show {
-  display: block;
-}
-
-.surprise h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(38px, 8vw, 65px);
-  color: var(--purple);
-  margin-top: 15px;
-}
-
-.surprise p {
-  color: var(--muted);
-  margin-top: 12px;
-}
-
-footer {
-  border-top: 1px solid rgba(255,255,255,.07);
-  text-align: center;
-  padding: 35px 20px;
-  color: #766d84;
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-footer span {
-  color: var(--gold);
+  background: rgba(214,189,145,.12);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,.2);
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .9s ease, transform .9s ease;
+  display: none;
+  margin-top: 17px;
+  width: min(330px,80vw);
+  padding: 12px;
+  border: 1px solid rgba(214,189,145,.35);
+  background: rgba(14,16,29,.78);
+  animation: appear .7s ease both;
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+.reveal.show {
+  display: block;
 }
 
-@keyframes fadeUp {
+.reveal img {
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+  display: block;
+}
+
+.reveal p {
+  font-family: 'Cormorant Garamond',serif;
+  font-size: 24px;
+  color: #f1e9f4;
+  margin: 10px 0 3px;
+}
+
+@keyframes appear {
   from {
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -421,42 +405,52 @@ footer span {
   }
 }
 
-@keyframes cakeFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+footer {
+  text-align: center;
+  padding: 0 20px 35px;
+  color: #a69eb0;
+  font-size: 9px;
+  letter-spacing: .27em;
+  text-transform: uppercase;
 }
 
+/* MÓVILES */
+
 @media(max-width:600px) {
-  nav {
-    padding: 18px 22px;
+  .wrap {
+    width: calc(100% - 42px);
   }
 
-  .logo {
-    font-size: 22px;
+  .hero {
+    min-height: 94svh;
   }
 
-  .nav-link {
-    font-size: 9px;
-    letter-spacing: 1px;
+  .eyebrow:before,
+  .eyebrow:after {
+    width: 17px;
+    margin: 0 8px;
   }
 
-  section {
-    padding: 85px 18px;
+  .letter {
+    padding-top: 45px;
   }
 
   .letter p {
-    font-size: 14px;
+    line-height: 1.72;
   }
 
-  .thanks p {
-    font-size: 13px;
+  .closing {
+    padding-top: 60px;
+  }
+
+  .personal-box {
+    padding: 30px 23px;
   }
 }
 
-@media(prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
+@media(prefers-reduced-motion:reduce) {
+  *,*:before,*:after {
+    animation: none !important;
     scroll-behavior: auto !important;
   }
 }
@@ -465,337 +459,331 @@ footer span {
 
 <body>
 
-<canvas id="stars"></canvas>
-<div class="ambient one"></div>
-<div class="ambient two"></div>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="ambient"></div>
+<div class="glow"></div>
 
-<nav>
-  <div class="logo">E.</div>
-  <a class="nav-link" href="#carta">Un mensaje para ti</a>
-</nav>
+<main>
 
-<header class="hero">
-  <div class="eyebrow">Un día especial · Para alguien especial</div>
+<!-- PORTADA -->
 
-  <h1>
-    Feliz
-    <span>cumpleaños,</span>
-    Esme.
-  </h1>
+<section class="hero wrap">
 
-  <p class="hero-subtitle">
-    Hoy el universo tiene una razón más para brillar.
-  </p>
+  <div>
+    <div class="eyebrow">Una fecha para recordar</div>
 
-  <div class="scroll">Desliza para descubrir</div>
-</header>
+    <h1>
+      Feliz
+      <span>cumpleaños,</span>
+      Esme.
+    </h1>
 
-<section class="reveal">
-  <div class="container intro">
-    <div class="section-label">Antes de empezar</div>
-    <h2 class="section-title">Este día es tuyo.</h2>
-
-    <p>
-      Hay personas que tienen una manera especial de dejar
-      algo bonito en los demás. Por eso hoy quería dedicarte
-      unas palabras y recordarte lo valiosa que eres.
-    </p>
-
-    <div class="divider"></div>
-
-    <p>
-      Espero que este nuevo año de vida venga acompañado
-      de momentos que te hagan feliz, personas que te quieran
-      sinceramente y oportunidades para cumplir todo aquello
-      que te propones.
+    <p class="hero-sub">
+      Hay palabras que no buscan cambiar nada.
+      A veces, sencillamente, nacen del cariño y del deseo
+      sincero de que a alguien le vaya bien.
     </p>
   </div>
-</section>
 
-<section id="carta" class="reveal">
-  <div class="container">
-    <div class="section-label">Con cariño</div>
-    <h2 class="section-title">Unas palabras para ti</h2>
-
-    <article class="letter">
-      <div class="letter-date">29 de octubre · Un día para celebrar</div>
-
-      <h3>Querida Esme:</h3>
-
-      <p>
-        Feliz cumpleaños. Espero de corazón que hoy tengas
-        un día bonito, lleno de sonrisas, tranquilidad y
-        momentos que quieras guardar para siempre.
-      </p>
-
-      <p>
-        Quiero que nunca dudes de la persona que eres.
-        Tienes una manera muy tuya de ser, una personalidad
-        que te hace diferente y una luz que no deberías
-        permitir que nadie apague.
-      </p>
-
-      <p>
-        Sigue persiguiendo tus metas, incluso cuando las
-        cosas no salgan como esperabas. No te compares con
-        los demás ni sientas que tienes que llegar a algún
-        lugar antes de tiempo. Cada paso que das cuenta,
-        incluso aquellos que parecen pequeños.
-      </p>
-
-      <p>
-        Ojalá este nuevo año te encuentre más segura de ti
-        misma, orgullosa de lo que has conseguido y con
-        muchas ganas de descubrir todo lo que todavía
-        puedes lograr.
-      </p>
-
-      <p>
-        Mereces vivir experiencias bonitas, reír hasta que
-        te duela el estómago, cumplir tus sueños y encontrar
-        motivos para sentirte orgullosa de ti misma.
-      </p>
-
-      <p>
-        Nunca olvides lo mucho que vales. Y cuando tengas
-        días difíciles, recuerda que un mal momento no
-        define tu historia ni todo lo bonito que todavía
-        te espera.
-      </p>
-
-      <p>
-        Espero que la vida te sorprenda de maneras
-        maravillosas. Que nunca te falten razones para
-        sonreír y que siempre tengas el valor de seguir
-        siendo tú.
-      </p>
-
-      <div class="divider" style="margin-left:0"></div>
-
-      <p class="signature">Con mucho cariño.</p>
-    </article>
+  <div class="hero-bottom">
+    Una pequeña carta para ti
+    <i></i>
   </div>
+
 </section>
 
-<section class="quote-section reveal">
-  <div class="quote-mark">“</div>
+<!-- CARTA PRINCIPAL -->
 
-  <p class="quote">
-    No dejes que nada apague ese
-    <span>brillo que tienes en tus ojos.</span>
+<article class="letter wrap">
+
+  <div class="section-rule">
+    Unas palabras para ti
+  </div>
+
+  <h2 class="salutation">Esme:</h2>
+
+  <p class="lead">
+    Hoy es un día especial y quería dedicarte unas palabras.
+    Espero que este nuevo año de vida venga acompañado de
+    muchísimas cosas bonitas, oportunidades, aprendizajes y
+    momentos que te hagan sentir verdaderamente feliz.
+    Deseo que cada objetivo que tengas en mente se vaya
+    haciendo realidad y que nunca te falten las ganas de
+    seguir construyendo la vida que quieres.
   </p>
 
-  <div class="quote-caption">Nunca lo olvides, Esme.</div>
-</section>
+  <p>
+    Quiero que nunca pierdas esa actitud que te caracteriza,
+    esa personalidad tan tuya que te hace diferente y que,
+    de alguna manera, consigue dejar una huella en las personas.
+    No cambies esa forma de ser, esa manera de expresarte,
+    de ver las cosas y de afrontar la vida. Conserva esa
+    esencia que te hace ser tú, incluso cuando las
+    circunstancias no sean las mejores.
+  </p>
 
-<section class="reveal">
-  <div class="thanks">
-    <h3>Y antes de terminar...</h3>
+  <p class="highlight">
+    Espero que en cada momento, en cada decisión y en cada
+    paso que des, puedas sentirte orgullosa de ti misma.
+    No solamente cuando consigas algo grande o alcances
+    una meta importante, sino también cuando tengas que
+    empezar de nuevo, cuando te equivoques, cuando tengas
+    miedo o cuando simplemente hayas hecho lo mejor que
+    podías hacer. Todo eso también merece reconocimiento.
+  </p>
+
+  <p>
+    Nunca subestimes lo que eres capaz de conseguir.
+    Habrá días en los que las cosas no salgan como esperas,
+    momentos en los que dudes de tus decisiones y situaciones
+    que probablemente no puedas comprender en ese instante.
+    Pero espero que siempre encuentres la fuerza para
+    continuar, aprender y mirar hacia adelante.
+  </p>
+
+  <p>
+    Deseo que conozcas personas que valoren tu forma de ser,
+    que te acompañen en tus mejores momentos y que también
+    sepan estar presentes cuando las cosas se compliquen.
+    Que nunca tengas que apagar tu personalidad para encajar
+    en ningún lugar y que siempre puedas sentirte libre de
+    ser exactamente quien eres.
+  </p>
+
+  <p class="highlight">
+    Que tengas muchísimas razones para reír, que cumplas
+    todos esos planes que tienes en mente, que descubras
+    cosas nuevas y que nunca dejes de sorprenderte con
+    todo lo que la vida todavía puede ofrecerte. Ojalá
+    llegues muy lejos y que, cuando mires hacia atrás,
+    puedas reconocer todo lo que has avanzado.
+  </p>
+
+  <p>
+    Sobre todo, deseo que seas feliz. Que aprendas a disfrutar
+    también de las cosas pequeñas, de esos momentos que
+    parecen insignificantes pero que terminan convirtiéndose
+    en recuerdos bonitos. Que tengas tranquilidad, que
+    encuentres tu propio camino y que jamás olvides lo mucho
+    que vales.
+  </p>
+
+  <p>
+    No dejes que los días difíciles te hagan olvidar la
+    persona maravillosa que eres. Sigue teniendo esa
+    personalidad, esa actitud y esa chispa que te distinguen.
+    El mundo necesita personas que no tengan miedo de ser
+    ellas mismas.
+  </p>
+
+  <p class="quiet">
+    Y bueno, espero que disfrutes muchísimo tu día.
+    Que recibas mucho cariño, que sonrías hasta que te duela
+    la cara y que este sea solamente el comienzo de un año
+    lleno de experiencias que valgan la pena.
+  </p>
+
+  <div class="signature">
+    Te deseo siempre lo mejor.
+  </div>
+
+</article>
+
+<!-- MENSAJE FINAL -->
+
+<section class="closing wrap">
+
+  <div class="ornament">✧　✦　✧</div>
+
+  <h2>
+    No dejes que nada apague ese brillo que tienes en tus ojos.
+    <em>Feliz cumpleaños, Esme.</em>
+  </h2>
+
+  <!-- RECUADRO PERSONAL -->
+
+  <div class="personal-box">
+
+    <div class="box-decoration">
+      UNA ÚLTIMA COSA...
+    </div>
 
     <p>
       Capaz nunca te dije esto, pero te agradezco demasiado
       por todas las cosas que me dijiste, que en un primer
       momento no entendí, pero que ahora veo con claridad.
       Eres una persona maravillosa, nunca dudes de eso.
+    </p>
+
+    <p>
       Espero que encuentres en cada momento un motivo para
       sonreír, sin importar qué tan mala sea la situación.
       Nunca pierdas esa manera tan tuya de ser y recuerda
       que siempre hay algo por lo que vale la pena seguir.
+    </p>
+
+    <p class="last-joke">
       Y que quería meterte un tabazo antes que te vayas
       y ya ctm JAJAJA.
     </p>
+
+    <div class="box-end">✦</div>
+
   </div>
+
+  <!-- PASTEL Y SORPRESA -->
+
+  <div class="cake-zone">
+
+    <div class="cake">🎂</div>
+
+    <div class="hint">Pide un deseo</div>
+
+    <button id="wish" type="button">
+      Sopla la vela
+    </button>
+
+    <div class="reveal" id="reveal">
+
+      <img src="foto/foto.jpg" alt="Sorpresa de cumpleaños">
+
+      <p>feliz cumpleaños 🖕</p>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section class="cake-section reveal">
-  <div class="section-label">Un último detalle</div>
-
-  <h2 class="section-title">Pide un deseo.</h2>
-
-  <div class="cake">🎂</div>
-
-  <p class="cake-text">
-    Cierra los ojos, piensa en algo bonito y sopla la vela.
-  </p>
-
-  <button id="blow">Sopla la vela</button>
-
-  <div class="surprise" id="surprise">
-    <div style="font-size:55px">✨</div>
-    <h2>feliz cumpleaños 🖕</h2>
-    <p>JAJAJA, espero que sonrías. Que tengas un bonito día, Esme.</p>
-  </div>
-</section>
+</main>
 
 <footer>
-  Hecho con cariño · <span>Me lo saludas al Nill.</span>
+  Me lo saludas al Nill.
 </footer>
 
+<!-- ANIMACIÓN DEL UNIVERSO -->
+
 <script>
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
+(() => {
 
-let width, height;
-let stars = [];
-let meteors = [];
+  const c = document.getElementById('sky');
+  const x = c.getContext('2d');
 
-function resize() {
-  width = canvas.width = window.innerWidth;
-  height = canvas.height = window.innerHeight;
+  let w, h;
+  let dots = [];
+  let meteors = [];
 
-  stars = [];
+  function size() {
 
-  const amount = Math.min(
-    180,
-    Math.floor((width * height) / 6500)
-  );
+    const d = Math.min(devicePixelRatio || 1, 2);
 
-  for (let i = 0; i < amount; i++) {
-    stars.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      radius: Math.random() * 1.5 + .2,
-      alpha: Math.random() * .7 + .2,
-      speed: Math.random() * .012 + .003
-    });
-  }
-}
+    w = c.width = innerWidth * d;
+    h = c.height = innerHeight * d;
 
-function createMeteor() {
-  if (meteors.length < 2 && Math.random() < .012) {
-    meteors.push({
-      x: Math.random() * width,
-      y: -20,
-      length: Math.random() * 100 + 50,
-      speed: Math.random() * 5 + 4,
-      opacity: 1
-    });
-  }
-}
+    c.style.width = innerWidth + 'px';
+    c.style.height = innerHeight + 'px';
 
-function draw() {
-  ctx.clearRect(0, 0, width, height);
-
-  stars.forEach(star => {
-    star.alpha += star.speed;
-
-    if (star.alpha > .9 || star.alpha < .2) {
-      star.speed *= -1;
-    }
-
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(230,220,255,${star.alpha})`;
-    ctx.fill();
-  });
-
-  createMeteor();
-
-  meteors.forEach((meteor, index) => {
-    meteor.x -= meteor.speed;
-    meteor.y += meteor.speed;
-    meteor.opacity -= .008;
-
-    const gradient = ctx.createLinearGradient(
-      meteor.x,
-      meteor.y,
-      meteor.x + meteor.length,
-      meteor.y - meteor.length
+    dots = Array.from(
+      {length: Math.min(650, Math.floor(innerWidth * 1.15))},
+      () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.35 + .25,
+        a: Math.random() * .65 + .2,
+        p: Math.random() * 6.28,
+        s: Math.random() * .018 + .003
+      })
     );
 
-    gradient.addColorStop(0, "rgba(167,139,250,0)");
-    gradient.addColorStop(1, `rgba(232,201,140,${meteor.opacity})`);
+  }
 
-    ctx.beginPath();
-    ctx.strokeStyle = gradient;
-    ctx.lineWidth = 1.5;
-    ctx.moveTo(meteor.x, meteor.y);
-    ctx.lineTo(
-      meteor.x + meteor.length,
-      meteor.y - meteor.length
-    );
-    ctx.stroke();
+  function frame() {
 
-    if (meteor.opacity <= 0) {
-      meteors.splice(index, 1);
+    x.clearRect(0, 0, w, h);
+
+    /* ESTRELLAS */
+
+    for (const s of dots) {
+
+      s.p += s.s;
+
+      x.beginPath();
+      x.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+
+      x.fillStyle =
+        `rgba(235,225,255,${s.a * (.65 + .35 * Math.sin(s.p))})`;
+
+      x.fill();
+
     }
-  });
 
-  requestAnimationFrame(draw);
-}
+    /* ESTRELLAS FUGACES */
 
-window.addEventListener("resize", resize);
-resize();
-draw();
+    if (Math.random() < .018 && meteors.length < 3) {
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
+      meteors.push({
+        x: Math.random() * w,
+        y: Math.random() * h * .55,
+        v: Math.random() * 8 + 6,
+        l: Math.random() * 90 + 70,
+        t: 0
+      });
+
     }
-  });
-}, {
-  threshold: .12
-});
 
-document.querySelectorAll(".reveal").forEach(element => {
-  observer.observe(element);
-});
+    for (let i = meteors.length - 1; i >= 0; i--) {
 
-document.getElementById("blow").addEventListener("click", () => {
-  document.getElementById("surprise").classList.add("show");
+      const m = meteors[i];
 
-  document.getElementById("blow").textContent = "Deseo concedido ✨";
+      m.x += m.v;
+      m.y += m.v * .55;
+      m.t++;
 
-  launchConfetti();
-});
+      const a = 1 - m.t / 38;
 
-function launchConfetti() {
-  const colors = [
-    "#a78bfa",
-    "#e8c98c",
-    "#ffffff",
-    "#d8b4fe"
-  ];
+      const g = x.createLinearGradient(
+        m.x, m.y,
+        m.x - m.l, m.y - m.l * .55
+      );
 
-  for (let i = 0; i < 100; i++) {
-    const piece = document.createElement("div");
+      g.addColorStop(0, `rgba(255,255,255,${a})`);
+      g.addColorStop(1, 'rgba(160,140,220,0)');
 
-    piece.style.position = "fixed";
-    piece.style.left = Math.random() * 100 + "vw";
-    piece.style.top = "-15px";
-    piece.style.width = "7px";
-    piece.style.height = "10px";
-    piece.style.background =
-      colors[Math.floor(Math.random() * colors.length)];
-    piece.style.zIndex = "100";
-    piece.style.pointerEvents = "none";
-    piece.style.borderRadius = "2px";
+      x.beginPath();
+      x.moveTo(m.x, m.y);
+      x.lineTo(m.x - m.l, m.y - m.l * .55);
 
-    document.body.appendChild(piece);
+      x.strokeStyle = g;
+      x.lineWidth = 1.5;
+      x.stroke();
 
-    const destination = window.innerHeight + 40;
-    const duration = Math.random() * 2500 + 2000;
-    const drift = (Math.random() - .5) * 250;
-
-    const animation = piece.animate([
-      {
-        transform: "translate(0, 0) rotate(0deg)",
-        opacity: 1
-      },
-      {
-        transform: `translate(${drift}px, ${destination}px) rotate(720deg)`,
-        opacity: .1
+      if (m.t > 38) {
+        meteors.splice(i, 1);
       }
-    ], {
-      duration: duration,
-      easing: "ease-in"
-    });
 
-    animation.onfinish = () => piece.remove();
+    }
+
+    requestAnimationFrame(frame);
+
   }
-}
+
+  addEventListener('resize', size);
+
+  size();
+  frame();
+
+})();
+
+/* BOTÓN DEL PASTEL */
+
+document.getElementById('wish').addEventListener('click', function() {
+
+  document.getElementById('reveal').classList.add('show');
+
+  this.textContent = 'Deseo concedido';
+  this.disabled = true;
+
+});
 </script>
 
 </body>
