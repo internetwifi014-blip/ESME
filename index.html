@@ -4,382 +4,1711 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070812">
-<title>For Esme — A Special Day</title>
+<meta name="theme-color" content="#080914">
+<meta name="description" content="Una pequeña sorpresa preparada especialmente para Esme.">
+<title>ESME — A Special Universe</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+/* =========================================================
+   01. CONFIGURACIÓN GENERAL
+========================================================= */
+
 :root {
-  --bg:#070812;
-  --panel:rgba(17,19,37,.78);
-  --gold:#d9bd82;
-  --violet:#a18aff;
-  --white:#f4f0e9;
-  --muted:#aaa9ba;
-  --line:rgba(217,189,130,.2);
+  --background: #080914;
+  --background-light: #101225;
+  --panel: rgba(17, 19, 38, .78);
+  --gold: #d9bd82;
+  --gold-light: #f1dcae;
+  --violet: #a18aff;
+  --violet-light: #c6b6ff;
+  --white: #f5f1ea;
+  --muted: #aaa9ba;
+  --muted-dark: #77778d;
+  --border: rgba(217, 189, 130, .2);
+  --border-light: rgba(255,255,255,.08);
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-code: 'DM Mono', monospace;
+  --transition: .4s ease;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg);
-  color:var(--white);
-  font-family:'DM Sans',sans-serif;
-  overflow-x:hidden;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-#universe{
-  position:fixed;inset:0;width:100%;height:100%;
-  z-index:-3;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
-.aurora{
-  position:fixed;inset:-20%;z-index:-2;pointer-events:none;
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+::selection {
+  background: rgba(161,138,255,.4);
+  color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================================================
+   02. FONDO Y ATMÓSFERA
+========================================================= */
+
+#universe {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -5;
+  pointer-events: none;
+}
+
+.aurora {
+  position: fixed;
+  inset: -20%;
+  z-index: -4;
+  pointer-events: none;
   background:
-   radial-gradient(ellipse at 20% 30%,rgba(93,64,180,.17),transparent 40%),
-   radial-gradient(ellipse at 80% 65%,rgba(48,92,155,.13),transparent 40%),
-   radial-gradient(ellipse at 50% 100%,rgba(180,139,76,.08),transparent 35%);
-  filter:blur(35px);
-  animation:aurora 15s ease-in-out infinite alternate;
-}
-@keyframes aurora{to{transform:translate(3%,-2%) scale(1.08)}}
-
-.noise{
- position:fixed;inset:0;pointer-events:none;z-index:10;opacity:.035;
- background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-}
-nav{
- position:fixed;top:0;left:0;width:100%;z-index:20;
- display:flex;justify-content:space-between;align-items:center;
- padding:22px 7%;border-bottom:1px solid rgba(255,255,255,.06);
- background:rgba(7,8,18,.65);backdrop-filter:blur(18px);
-}
-.brand{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:3px;color:var(--gold)}
-.nav-status{font:10px 'DM Mono',monospace;color:#8d8b9c;letter-spacing:1px}
-.status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#8bd5a8;margin-right:8px;box-shadow:0 0 10px #8bd5a8}
-
-main{width:min(900px,88%);margin:auto}
-.hero{
- min-height:100vh;display:flex;flex-direction:column;
- justify-content:center;align-items:center;text-align:center;
- position:relative;padding:130px 0 80px;
-}
-.eyebrow{
- font:11px 'DM Mono',monospace;color:var(--gold);
- letter-spacing:5px;text-transform:uppercase;margin-bottom:28px;
-}
-.hero h1{
- font:500 clamp(65px,13vw,130px)/.9 'Cormorant Garamond',serif;
- letter-spacing:-4px;
- background:linear-gradient(120deg,#fff 20%,#d9bd82 60%,#a18aff);
- -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.hero-sub{font:300 14px 'DM Sans',sans-serif;color:var(--muted);letter-spacing:3px;margin-top:30px}
-.hero-line{width:1px;height:75px;background:linear-gradient(transparent,var(--gold));margin-top:55px}
-.scroll-note{font:9px 'DM Mono',monospace;color:#77768a;letter-spacing:3px;margin-top:15px}
-
-.code-window{
- position:absolute;right:-5%;top:27%;width:230px;
- text-align:left;padding:17px;border:1px solid rgba(161,138,255,.17);
- background:rgba(10,11,25,.58);border-radius:8px;
- font:9px/1.9 'DM Mono',monospace;color:#8c8ca6;
- transform:rotate(3deg);opacity:.68;
-}
-.code-window .pink{color:#c59bff}
-.code-window .green{color:#9ed6b3}
-.code-window .gold{color:var(--gold)}
-
-.section-label{
- font:10px 'DM Mono',monospace;color:var(--gold);
- letter-spacing:4px;text-transform:uppercase;margin-bottom:22px;
-}
-.letter-section{padding:100px 0 110px}
-.section-title{
- font:500 clamp(42px,7vw,65px)/1.05 'Cormorant Garamond',serif;
- margin-bottom:38px;
-}
-.letter-card{
- position:relative;padding:clamp(25px,6vw,58px);
- border:1px solid var(--line);border-radius:5px;
- background:linear-gradient(145deg,rgba(23,24,45,.86),rgba(10,11,23,.75));
- box-shadow:0 30px 100px rgba(0,0,0,.25);
-}
-.letter-card:before{
- content:"";position:absolute;top:-1px;left:30px;width:75px;height:1px;
- background:var(--gold);box-shadow:0 0 15px var(--gold);
-}
-.letter-card p{
- color:#c5c2ce;font-size:15px;line-height:2.1;
- font-weight:300;margin-bottom:22px;
-}
-.letter-card p:last-child{margin-bottom:0}
-.signature{
- font:italic 31px 'Cormorant Garamond',serif;color:var(--gold);
- margin-top:32px;
-}
-.code-divider{
- display:flex;align-items:center;gap:15px;
- color:#77768a;font:9px 'DM Mono',monospace;
- letter-spacing:2px;margin:0 0 20px;
-}
-.code-divider:after{content:"";height:1px;flex:1;background:rgba(255,255,255,.1)}
-
-.terminal{
- margin:90px 0;padding:0;border:1px solid rgba(161,138,255,.2);
- background:rgba(10,11,23,.8);border-radius:8px;overflow:hidden;
- box-shadow:0 20px 80px rgba(0,0,0,.25);
-}
-.terminal-head{
- padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.08);
- display:flex;align-items:center;gap:7px;
- font:10px 'DM Mono',monospace;color:#858398;
-}
-.terminal-head span{width:8px;height:8px;border-radius:50%;background:#777}
-.terminal-head span:first-child{background:#e58c89}
-.terminal-head span:nth-child(2){background:#e6c17b}
-.terminal-head span:nth-child(3){background:#8bc79d}
-.terminal-title{margin-left:10px}
-.terminal-body{padding:24px;font:12px/2 'DM Mono',monospace;color:#aaa9ba}
-.terminal-body .command{color:#bba6ff}
-.terminal-body .output{color:#a9d8b5}
-.terminal-body .gold{color:var(--gold)}
-
-.personal-box{
- margin:100px 0 90px;padding:clamp(25px,6vw,50px);
- border:1px solid rgba(217,189,130,.35);
- background:linear-gradient(135deg,rgba(42,34,52,.65),rgba(14,15,29,.85));
- position:relative;
-}
-.personal-box:before{
- content:"A PERSONAL NOTE";position:absolute;top:-9px;left:25px;
- background:#10101e;padding:0 12px;color:var(--gold);
- font:9px 'DM Mono',monospace;letter-spacing:3px;
-}
-.personal-box p{
- font:300 16px/2 'DM Sans',sans-serif;color:#d1cbd5;
+    radial-gradient(ellipse at 20% 25%, rgba(93,64,180,.20), transparent 42%),
+    radial-gradient(ellipse at 80% 60%, rgba(48,92,155,.16), transparent 42%),
+    radial-gradient(ellipse at 50% 100%, rgba(180,139,76,.10), transparent 38%);
+  filter: blur(45px);
+  animation: auroraMove 18s ease-in-out infinite alternate;
 }
 
-.cake-section{text-align:center;padding:40px 0 120px}
-.cake{
- font-size:85px;display:block;margin:25px auto;
- filter:drop-shadow(0 0 25px rgba(217,189,130,.25));
- animation:float 3s ease-in-out infinite;
+@keyframes auroraMove {
+  0% {
+    transform: translate(-2%, 1%) scale(1);
+  }
+  100% {
+    transform: translate(3%, -3%) scale(1.1);
+  }
 }
-@keyframes float{50%{transform:translateY(-12px)}}
-.cake-section h2{
- font:500 54px 'Cormorant Garamond',serif;color:var(--gold);
-}
-.cake-section p{color:var(--muted);font-size:13px;margin-top:12px}
-button{
- margin-top:30px;padding:15px 35px;
- border:1px solid var(--gold);background:transparent;
- color:var(--gold);font:11px 'DM Mono',monospace;
- letter-spacing:2px;text-transform:uppercase;
- cursor:pointer;transition:.3s;
-}
-button:hover{background:var(--gold);color:#10101a;box-shadow:0 0 30px rgba(217,189,130,.2)}
-#surprise{display:none;margin-top:35px;animation:appear 1s ease}
-#surprise img{
- display:block;width:min(350px,90%);margin:0 auto 20px;
- border:1px solid var(--line);padding:7px;background:#151526;
-}
-#surprise h3{font:italic 35px 'Cormorant Garamond',serif;color:var(--gold)}
-@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
 
-footer{
- border-top:1px solid rgba(255,255,255,.08);
- padding:30px 7%;display:flex;justify-content:space-between;
- color:#77768a;font:10px 'DM Mono',monospace;letter-spacing:1px;
+.background-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  opacity: .12;
+  background-image:
+    linear-gradient(rgba(161,138,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(161,138,255,.08) 1px, transparent 1px);
+  background-size: 75px 75px;
+  mask-image: linear-gradient(to bottom, transparent, black 30%, transparent 95%);
 }
-footer span:last-child{color:var(--gold)}
 
-.reveal{opacity:0;transform:translateY(35px);transition:opacity 1s,transform 1s}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+  opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
 
-@media(max-width:700px){
- nav{padding:18px 6%}
- .nav-status{font-size:8px}
- .code-window{right:-4%;top:14%;width:155px;font-size:7px;opacity:.42}
- .hero{min-height:95vh}
- .hero h1{letter-spacing:-2px}
- .hero-sub{font-size:11px}
- .letter-section{padding:65px 0}
- .letter-card p,.personal-box p{font-size:14px}
- .terminal-body{font-size:10px;padding:18px}
- footer{font-size:8px;gap:15px}
+.glow-orb {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: .09;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.orb-one {
+  top: 20%;
+  left: -200px;
+  background: #8063ff;
+}
+
+.orb-two {
+  bottom: 5%;
+  right: -200px;
+  background: #c7a46c;
+}
+
+/* =========================================================
+   03. BARRA DE PROGRESO
+========================================================= */
+
+.progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 100;
+  background: transparent;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--violet), var(--gold));
+  box-shadow: 0 0 12px var(--gold);
+}
+
+/* =========================================================
+   04. NAVEGACIÓN
+========================================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 7%;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  background: rgba(7,8,18,.68);
+  backdrop-filter: blur(20px);
+  transition: var(--transition);
+}
+
+.navbar.scrolled {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  background: rgba(7,8,18,.92);
+}
+
+.logo {
+  font-family: var(--font-code);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-status {
+  font: 9px var(--font-code);
+  color: #aaa9ba;
+  letter-spacing: 1px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8bd5a8;
+  margin-right: 8px;
+  box-shadow: 0 0 10px #8bd5a8;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .4; }
+}
+
+/* =========================================================
+   05. ELEMENTOS GENERALES
+========================================================= */
+
+.container {
+  width: min(1000px, 88%);
+  margin: auto;
+}
+
+.section {
+  padding: 110px 0;
+  position: relative;
+}
+
+.section-tag {
+  font: 10px var(--font-code);
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  font: 500 clamp(40px, 7vw, 68px)/1.05 var(--font-display);
+  color: var(--white);
+  margin-bottom: 25px;
+}
+
+.section-description {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 600px;
+  font-weight: 300;
+}
+
+.gold-line {
+  height: 1px;
+  width: 65px;
+  background: var(--gold);
+  margin: 25px 0;
+  box-shadow: 0 0 12px rgba(217,189,130,.4);
+}
+
+.eyebrow {
+  font: 10px var(--font-code);
+  color: var(--gold);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #fff, var(--gold), var(--violet-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* =========================================================
+   06. PORTADA
+========================================================= */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 130px 0 80px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: heroEnter 1.5s ease both;
+}
+
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-overline {
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  font: 500 clamp(80px, 17vw, 165px)/.85 var(--font-display);
+  letter-spacing: -5px;
+  margin: 15px 0;
+}
+
+.hero-subtitle {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 4px;
+  margin-top: 35px;
+  font-weight: 300;
+}
+
+.hero-caption {
+  color: var(--muted-dark);
+  font: 9px var(--font-code);
+  letter-spacing: 3px;
+  margin-top: 55px;
+}
+
+.hero-line {
+  height: 70px;
+  width: 1px;
+  background: linear-gradient(transparent, var(--gold));
+  margin: 45px auto 0;
+}
+
+.hero-code {
+  position: absolute;
+  top: 28%;
+  right: 1%;
+  width: 210px;
+  padding: 17px;
+  background: rgba(10,11,25,.55);
+  border: 1px solid rgba(161,138,255,.2);
+  border-radius: 7px;
+  text-align: left;
+  transform: rotate(3deg);
+  opacity: .65;
+  font: 9px/2 var(--font-code);
+  color: #8c8ca6;
+}
+
+.hero-code .purple { color: #c59bff; }
+.hero-code .green { color: #9ed6b3; }
+.hero-code .gold { color: var(--gold); }
+
+.hero-orbit {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgba(217,189,130,.08);
+  border-radius: 50%;
+  animation: orbit 40s linear infinite;
+  pointer-events: none;
+}
+
+.hero-orbit::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 20px var(--gold);
+}
+
+@keyframes orbit {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   07. BOTÓN GENERAL
+========================================================= */
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 28px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  background: transparent;
+  font: 10px var(--font-code);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: .35s ease;
+}
+
+.button:hover {
+  background: var(--gold);
+  color: #11111d;
+  box-shadow: 0 0 35px rgba(217,189,130,.2);
+  transform: translateY(-3px);
+}
+
+.button:disabled {
+  opacity: .6;
+  cursor: default;
+  transform: none;
+}
+
+/* =========================================================
+   08. INTRODUCCIÓN
+========================================================= */
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr .8fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.intro-side {
+  position: relative;
+  min-height: 300px;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, rgba(28,26,53,.65), rgba(10,11,25,.7));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.intro-side::before {
+  content: "✦";
+  font-size: 100px;
+  color: var(--gold);
+  opacity: .7;
+  animation: float 5s ease-in-out infinite;
+}
+
+.intro-side::after {
+  content: "A SPECIAL DAY";
+  position: absolute;
+  bottom: 20px;
+  font: 9px var(--font-code);
+  letter-spacing: 4px;
+  color: var(--muted);
+}
+
+@keyframes float {
+  50% { transform: translateY(-13px); }
+}
+
+/* =========================================================
+   09. CARTA
+========================================================= */
+
+.letter-section {
+  padding-top: 120px;
+}
+
+.letter-card {
+  position: relative;
+  padding: clamp(28px, 6vw, 65px);
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, rgba(23,24,45,.9), rgba(10,11,23,.88));
+  box-shadow: 0 30px 100px rgba(0,0,0,.25);
+  overflow: hidden;
+}
+
+.letter-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 40px;
+  width: 90px;
+  height: 1px;
+  background: var(--gold);
+  box-shadow: 0 0 15px var(--gold);
+}
+
+.letter-card::after {
+  content: "ESME";
+  position: absolute;
+  bottom: -30px;
+  right: 15px;
+  font: 120px var(--font-display);
+  color: rgba(255,255,255,.018);
+  pointer-events: none;
+}
+
+.letter-card p {
+  position: relative;
+  z-index: 1;
+  color: #c9c5d0;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 2.1;
+  margin-bottom: 24px;
+}
+
+.letter-card p:last-of-type {
+  margin-bottom: 0;
+}
+
+.letter-signature {
+  margin-top: 38px;
+  font: italic 34px var(--font-display);
+  color: var(--gold);
+}
+
+/* =========================================================
+   10. FRASE DESTACADA
+========================================================= */
+
+.quote-section {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.quote-mark {
+  font: 90px var(--font-display);
+  color: var(--gold);
+  line-height: .7;
+  opacity: .8;
+}
+
+.quote-text {
+  max-width: 750px;
+  margin: 25px auto;
+  font: 400 clamp(27px, 5vw, 42px)/1.35 var(--font-display);
+  color: #e7dfd4;
+}
+
+.quote-author {
+  color: var(--gold);
+  font: 9px var(--font-code);
+  letter-spacing: 3px;
+}
+
+/* =========================================================
+   11. DETALLES TECNOLÓGICOS
+========================================================= */
+
+.tech-section {
+  padding: 80px 0;
+}
+
+.tech-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.tech-card {
+  padding: 24px 16px;
+  background: rgba(17,19,38,.65);
+  border: 1px solid rgba(161,138,255,.15);
+  text-align: center;
+  transition: .4s ease;
+}
+
+.tech-card:hover {
+  border-color: rgba(217,189,130,.5);
+  transform: translateY(-7px);
+  background: rgba(35,31,58,.7);
+}
+
+.tech-icon {
+  font: 23px var(--font-code);
+  color: var(--violet-light);
+  margin-bottom: 15px;
+}
+
+.tech-name {
+  font: 10px var(--font-code);
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+.tech-description {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   12. RECUADRO PERSONAL
+========================================================= */
+
+.personal-section {
+  padding: 100px 0 90px;
+}
+
+.personal-box {
+  position: relative;
+  padding: clamp(28px, 6vw, 60px);
+  border: 1px solid rgba(217,189,130,.38);
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(161,138,255,.09), transparent 50%),
+    linear-gradient(135deg, rgba(42,34,52,.7), rgba(14,15,29,.9));
+  box-shadow: 0 30px 100px rgba(0,0,0,.2);
+}
+
+.personal-label {
+  position: absolute;
+  top: -10px;
+  left: 28px;
+  padding: 0 13px;
+  background: #11111f;
+  color: var(--gold);
+  font: 9px var(--font-code);
+  letter-spacing: 3px;
+}
+
+.personal-box p {
+  font-size: 15px;
+  line-height: 2.1;
+  font-weight: 300;
+  color: #d7d0dc;
+}
+
+.personal-sign {
+  font: italic 26px var(--font-display);
+  color: var(--gold);
+  margin-top: 28px;
+}
+
+/* =========================================================
+   13. GALERÍA
+========================================================= */
+
+.gallery-section {
+  padding: 80px 0 100px;
+}
+
+.gallery-frame {
+  width: min(430px, 100%);
+  margin: 40px auto 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  background: rgba(18,19,36,.8);
+  box-shadow: 0 30px 100px rgba(0,0,0,.35);
+  position: relative;
+}
+
+.gallery-frame::before,
+.gallery-frame::after {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-color: var(--gold);
+  border-style: solid;
+  opacity: .8;
+}
+
+.gallery-frame::before {
+  top: -5px;
+  left: -5px;
+  border-width: 1px 0 0 1px;
+}
+
+.gallery-frame::after {
+  bottom: -5px;
+  right: -5px;
+  border-width: 0 1px 1px 0;
+}
+
+.gallery-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  background: #111;
+}
+
+.gallery-caption {
+  padding: 18px 10px 8px;
+  text-align: center;
+  font: 10px var(--font-code);
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* =========================================================
+   14. PASTEL
+========================================================= */
+
+.cake-section {
+  text-align: center;
+  padding: 100px 0 130px;
+}
+
+.cake-stage {
+  position: relative;
+  padding: 40px 0;
+}
+
+.cake {
+  display: block;
+  font-size: 100px;
+  filter: drop-shadow(0 0 30px rgba(217,189,130,.25));
+  animation: cakeFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes cakeFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+.cake-section h2 {
+  font: 500 clamp(40px, 7vw, 60px) var(--font-display);
+  color: var(--gold);
+}
+
+.cake-section .cake-description {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.cake-button {
+  margin-top: 30px;
+}
+
+.surprise {
+  display: none;
+  margin-top: 45px;
+  animation: surpriseIn 1.2s ease both;
+}
+
+@keyframes surpriseIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.surprise img {
+  width: min(350px, 90%);
+  margin: auto;
+  padding: 9px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 70px rgba(0,0,0,.35);
+}
+
+.surprise h3 {
+  margin-top: 25px;
+  font: italic 40px var(--font-display);
+  color: var(--gold);
+}
+
+/* =========================================================
+   15. CONFETI
+========================================================= */
+
+.confetti-piece {
+  position: fixed;
+  top: -20px;
+  z-index: 80;
+  width: 8px;
+  height: 13px;
+  pointer-events: none;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translate3d(var(--drift), 110vh, 0) rotate(850deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   16. FOOTER
+========================================================= */
+
+.footer {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 35px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: var(--muted-dark);
+  font: 9px var(--font-code);
+  letter-spacing: 1.5px;
+}
+
+.footer-highlight {
+  color: var(--gold);
+}
+
+/* =========================================================
+   17. ANIMACIONES DE ENTRADA
+========================================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =========================================================
+   18. RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero-code {
+    right: -3%;
+    top: 17%;
+    width: 150px;
+    font-size: 7px;
+    opacity: .35;
+  }
+
+  .hero-orbit {
+    width: 350px;
+    height: 350px;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .intro-side {
+    min-height: 190px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .navbar {
+    padding: 18px 6%;
+  }
+
+  .logo {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .nav-status {
+    font-size: 8px;
+  }
+
+  .container {
+    width: 88%;
+  }
+
+  .hero {
+    min-height: 95vh;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .hero-subtitle {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .hero-code {
+    top: 14%;
+    width: 130px;
+    opacity: .3;
+  }
+
+  .hero-orbit {
+    width: 270px;
+    height: 270px;
+  }
+
+  .section {
+    padding: 75px 0;
+  }
+
+  .letter-card p,
+  .personal-box p {
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .tech-card {
+    padding: 20px 10px;
+  }
+
+  .tech-description {
+    font-size: 9px;
+  }
+
+  .cake {
+    font-size: 85px;
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   19. ACCESIBILIDAD
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
 }
 </style>
 </head>
 
 <body>
-<canvas id="universe"></canvas>
-<div class="aurora"></div>
-<div class="noise"></div>
 
-<nav>
- <div class="brand">E / SPECIAL EDITION</div>
- <div class="nav-status"><span class="status-dot"></span> A DAY TO REMEMBER</div>
+<!-- =======================================================
+     FONDO
+======================================================= -->
+
+<canvas id="universe" aria-hidden="true"></canvas>
+<div class="aurora"></div>
+<div class="background-grid"></div>
+<div class="noise"></div>
+<div class="glow-orb orb-one"></div>
+<div class="glow-orb orb-two"></div>
+
+<div class="progress-track">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- =======================================================
+     NAVEGACIÓN
+======================================================= -->
+
+<nav class="navbar" id="navbar">
+  <a href="#home" class="logo">E / SPECIAL EDITION</a>
+
+  <ul class="nav-links">
+    <li><a href="#home">Inicio</a></li>
+    <li><a href="#message">Mensaje</a></li>
+    <li><a href="#personal">Una nota</a></li>
+    <li><a href="#birthday">Final</a></li>
+  </ul>
+
+  <div class="nav-status">
+  
+<span class="status-dot"></span>
+ONLINE
+</div>
 </nav>
 
 <main>
-<section class="hero">
- <div class="code-window">
-  <div class="pink">class Birthday {</div>
-  &nbsp; <span class="green">String</span> name = "Esme";<br>
-  &nbsp; <span class="green">boolean</span> special = true;<br>
-  &nbsp; <span class="gold">void</span> celebrate() {<br>
-  &nbsp;&nbsp; System.out.println(<br>
-  &nbsp;&nbsp; "Happy Birthday");<br>
-  &nbsp; }<br>
-  <span class="pink">}</span>
- </div>
 
- <div class="eyebrow">A little something for you</div>
- <h1>Esme.</h1>
- <div class="hero-sub">SOME PEOPLE DESERVE THEIR OWN UNIVERSE</div>
- <div class="hero-line"></div>
- <div class="scroll-note">SCROLL TO EXPLORE ↓</div>
+<!-- PORTADA -->
+
+<section class="hero" id="home">
+
+  <div class="hero-orbit"></div>
+
+  <div class="hero-code" aria-hidden="true">
+    <span class="purple">class Birthday {</span><br>
+    &nbsp; <span class="green">String</span> name = "Esme";<br>
+    &nbsp; <span class="green">boolean</span> special = true;<br>
+    &nbsp; <span class="gold">void</span> celebrate() {<br>
+    &nbsp;&nbsp; System.out.println(<br>
+    &nbsp;&nbsp; "Happy Birthday");<br>
+    &nbsp; }<br>
+    <span class="purple">}</span>
+  </div>
+
+  <div class="hero-content">
+    <div class="eyebrow hero-overline">
+      A LITTLE SOMETHING FOR YOU
+    </div>
+
+    <h1 class="text-gradient">Esme.</h1>
+
+    <div class="hero-subtitle">
+      SOME PEOPLE DESERVE THEIR OWN UNIVERSE
+    </div>
+
+    <div class="hero-line"></div>
+
+    <div class="hero-caption">
+      SCROLL TO EXPLORE &nbsp; ↓
+    </div>
+  </div>
 </section>
 
-<section class="letter-section reveal">
- <div class="section-label">01 — A MESSAGE FOR YOU</div>
- <h2 class="section-title">Hoy es tu día.</h2>
- <div class="letter-card">
-  <p>Espero que hoy tengas un día bonito, de esos que se quedan guardados en la memoria por las pequeñas cosas, por las personas que te rodean y por todos esos momentos que te sacan una sonrisa.</p>
+<!-- INTRODUCCIÓN -->
 
-  <p>Quiero desearte que nunca pierdas esa actitud que te caracteriza, esa personalidad tan tuya que te hace ser quien eres. No dejes que las circunstancias, las opiniones de los demás o los momentos difíciles cambien esa esencia que te hace especial.</p>
+<section class="section reveal">
+  <div class="container intro-grid">
 
-  <p>Que cada meta que te propongas te acerque un poco más a la vida que quieres construir. Y que en cada paso que des, incluso cuando las cosas no salgan como esperabas, puedas sentirte orgullosa de ti misma. De tus decisiones, de tus esfuerzos, de tus avances y también de las veces que tuviste que empezar de nuevo.</p>
+    <div>
+      <div class="section-tag">00 — THE BEGINNING</div>
 
-  <p>Ojalá nunca te falten motivos para seguir creciendo, personas que valoren lo que eres y oportunidades para demostrarte todo lo que eres capaz de lograr. Disfruta de lo que tienes, persigue lo que sueñas y aprende a reconocer lo mucho que vales.</p>
+      <h2 class="section-heading">
+        Un día especial merece algo especial.
+      </h2>
 
-  <p>Y sobre todo, nunca sientas que tienes que dejar de ser tú para encajar en algún lugar. Tu forma de ser, tus ocurrencias, tu carácter y esa manera tan particular de ver las cosas también forman parte de lo que te hace única.</p>
+      <div class="gold-line"></div>
 
-  <p>Te deseo muchísima felicidad, tranquilidad, éxitos y momentos que te recuerden lo bonito que puede ser vivir. Que este nuevo año de vida venga con experiencias increíbles y razones para sentirte orgullosa de la persona en la que te estás convirtiendo.</p>
+      <p class="section-description">
+        Hay fechas que merecen detener un momento el tiempo.
+        Hoy es una de ellas. Preparé este pequeño espacio
+        para dedicarte unas palabras y desearte todo lo bonito
+        que mereces.
+      </p>
+    </div>
 
-  <div class="signature">Feliz cumpleaños, Esme.</div>
- </div>
+    <div class="intro-side"></div>
+
+  </div>
 </section>
 
-<div class="code-divider reveal">// A small program, just for you</div>
+<!-- CARTA PRINCIPAL -->
 
-<section class="terminal reveal">
- <div class="terminal-head">
-  <span></span><span></span><span></span>
-  <div class="terminal-title">birthday_message.cpp — terminal</div>
- </div>
- <div class="terminal-body">
-  <div><span class="command">#include</span> &lt;iostream&gt;</div>
-  <div><span class="command">int</span> main() {</div>
-  <div>&nbsp;&nbsp;std::string person = <span class="output">"Esme"</span>;</div>
-  <div>&nbsp;&nbsp;std::string wish = <span class="output">"Be happy, always."</span>;</div>
-  <div>&nbsp;&nbsp;<span class="command">while</span> (true) {</div>
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; wish;</div>
-  <div>&nbsp;&nbsp;}</div>
-  <div>&nbsp;&nbsp;<span class="gold">// End of program. The wish remains.</span></div>
-  <div>}</div>
- </div>
+<section class="section letter-section reveal" id="message">
+
+  <div class="container">
+
+    <div class="section-tag">01 — A MESSAGE FOR YOU</div>
+
+    <h2 class="section-heading">Hoy es tu día.</h2>
+
+    <div class="letter-card">
+
+      <p>
+        Espero que hoy tengas un día bonito, de esos que se
+        quedan guardados en la memoria por las pequeñas cosas,
+        por las personas que te rodean y por todos esos momentos
+        que te sacan una sonrisa.
+      </p>
+
+      <p>
+        Quiero desearte que nunca pierdas esa actitud que te
+        caracteriza, esa personalidad tan tuya que te hace ser
+        quien eres. No dejes que las circunstancias, las
+        opiniones de los demás o los momentos difíciles cambien
+        esa esencia que te hace especial.
+      </p>
+
+      <p>
+        Que cada meta que te propongas te acerque un poco más
+        a la vida que quieres construir. Y que en cada paso que
+        des, incluso cuando las cosas no salgan como esperabas,
+        puedas sentirte orgullosa de ti misma. De tus decisiones,
+        de tus esfuerzos, de tus avances y también de las veces
+        que tuviste que empezar de nuevo.
+      </p>
+
+      <p>
+        Ojalá nunca te falten motivos para seguir creciendo,
+        personas que valoren lo que eres y oportunidades para
+        demostrarte todo lo que eres capaz de lograr. Disfruta
+        de lo que tienes, persigue lo que sueñas y aprende a
+        reconocer lo mucho que vales.
+      </p>
+
+      <p>
+        Y sobre todo, nunca sientas que tienes que dejar de ser
+        tú para encajar en algún lugar. Tu forma de ser, tus
+        ocurrencias, tu carácter y esa manera tan particular de
+        ver las cosas también forman parte de lo que te hace única.
+      </p>
+
+      <p>
+        Te deseo muchísima felicidad, tranquilidad, éxitos y
+        momentos que te recuerden lo bonito que puede ser vivir.
+        Que este nuevo año de vida venga con experiencias
+        increíbles y razones para sentirte orgullosa de la
+        persona en la que te estás convirtiendo.
+      </p>
+
+      <div class="letter-signature">
+        Feliz cumpleaños, Esme.
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<section class="personal-box reveal">
- <p>Capaz nunca te dije esto, pero te agradezco demasiado por todas las cosas que me dijiste, que en un primer momento no entendí, pero que ahora veo con claridad. Eres una persona maravillosa, nunca dudes de eso. Espero que encuentres en cada momento un motivo para sonreír, sin importar qué tan mala sea la situación. Nunca pierdas esa manera tan tuya de ser y recuerda que siempre hay algo por lo que vale la pena seguir. Y que quería meterte un tabazo antes que te vayas y ya ctm JAJAJA.</p>
+<!-- FRASE -->
+
+<section class="quote-section reveal">
+  <div class="container">
+
+    <div class="quote-mark">“</div>
+
+    <p class="quote-text">
+      No dejes que nada apague ese brillo que tienes en tus ojos.
+    </p>
+
+    <div class="quote-author">
+      A REMINDER FOR YOU
+    </div>
+
+  </div>
 </section>
 
-<section class="cake-section reveal">
- <div class="section-label">02 — MAKE A WISH</div>
- <h2>One more thing...</h2>
- <span class="cake">🎂</span>
- <p>Hay algo que todavía tienes que hacer.</p>
- <button id="blow">Sopla la vela</button>
+<!-- DETALLES TECNOLÓGICOS -->
 
- <div id="surprise">
-  <img src="foto/foto.jpg" alt="Un recuerdo especial">
-  <h3>feliz cumpleaños 🖕</h3>
- </div>
+<section class="tech-section reveal">
+  <div class="container">
+
+    <div class="tech-heading">
+      <div class="section-tag">02 — DIGITAL CONSTELLATION</div>
+
+      <h2 class="section-heading">
+        A universe of possibilities.
+      </h2>
+
+      <p class="section-description" style="margin:auto">
+        Un pequeño detalle inspirado en el mundo de la tecnología.
+      </p>
+    </div>
+
+    <div class="tech-grid">
+
+      <div class="tech-card">
+        <div class="tech-icon">JS</div>
+        <div class="tech-name">JAVASCRIPT</div>
+        <div class="tech-description">Pequeñas interacciones.</div>
+      </div>
+
+      <div class="tech-card">
+        <div class="tech-icon">C++</div>
+        <div class="tech-name">C PLUS PLUS</div>
+        <div class="tech-description">Ideas que toman forma.</div>
+      </div>
+
+      <div class="tech-card">
+        <div class="tech-icon">Py</div>
+        <div class="tech-name">PYTHON</div>
+        <div class="tech-description">Nuevos caminos.</div>
+      </div>
+
+      <div class="tech-card">
+        <div class="tech-icon">J</div>
+        <div class="tech-name">JAVA</div>
+        <div class="tech-description">Un proyecto especial.</div>
+      </div>
+
+    </div>
+  </div>
 </section>
+
+<!-- AGRADECIMIENTO PERSONAL -->
+
+<section class="personal-section reveal" id="personal">
+
+  <div class="container">
+
+    <div class="personal-box">
+
+      <div class="personal-label">
+        A PERSONAL NOTE
+      </div>
+
+      <p>
+        Capaz nunca te dije esto, pero te agradezco demasiado
+        por todas las cosas que me dijiste, que en un primer
+        momento no entendí, pero que ahora veo con claridad.
+        Eres una persona maravillosa, nunca dudes de eso.
+        Espero que encuentres en cada momento un motivo para
+        sonreír, sin importar qué tan mala sea la situación.
+        Nunca pierdas esa manera tan tuya de ser y recuerda
+        que siempre hay algo por lo que vale la pena seguir.
+        Y que quería meterte un tabazo antes que te vayas y
+        ya ctm JAJAJA.
+      </p>
+
+      <div class="personal-sign">Con cariño.</div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+
+<section class="gallery-section reveal">
+
+  <div class="container">
+
+    <div class="section-tag">03 — A LITTLE MEMORY</div>
+
+    <h2 class="section-heading">
+      One moment, one memory.
+    </h2>
+
+    <p class="section-description">
+      Un pequeño espacio para guardar un recuerdo.
+    </p>
+
+    <div class="gallery-frame">
+
+      <img
+        src="foto/foto.jpg"
+        alt="Un recuerdo especial"
+        class="gallery-image"
+        loading="lazy"
+        onerror="this.style.display='none'; document.getElementById('imageError').style.display='block';"
+      >
+
+      <div id="imageError" style="display:none; padding:40px 15px; text-align:center; color:#aaa9ba; font-size:12px;">
+        No se encontró la fotografía. Revisa que esté en la carpeta foto con el nombre foto.jpg.
+      </div>
+
+      <div class="gallery-caption">
+        A MEMORY WORTH KEEPING
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PASTEL -->
+
+<section class="cake-section reveal" id="birthday">
+
+  <div class="container">
+
+    <div class="section-tag">04 — MAKE A WISH</div>
+
+    <h2>One more thing...</h2>
+
+    <p class="cake-description">
+      Hay algo que todavía tienes que hacer.
+    </p>
+
+    <div class="cake-stage">
+      <span class="cake" id="cake">🎂</span>
+    </div>
+
+    <button class="button cake-button" id="blowButton">
+      <span>Sopla la vela</span>
+      <span>✦</span>
+    </button>
+
+    <div class="surprise" id="surprise">
+
+      <img src="foto/foto.jpg" alt="Sorpresa de cumpleaños">
+
+      <h3>feliz cumpleaños 🖕</h3>
+
+    </div>
+
+  </div>
+</section>
+
 </main>
 
-<footer>
- <span>DESIGNED WITH CARE · 2026</span>
- <span>Me lo saludas al Nill.</span>
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div>DESIGNED WITH CARE · 2026</div>
+
+  <div class="footer-highlight">
+    Me lo saludas al Nill.
+  </div>
+
 </footer>
 
+<!-- JAVASCRIPT -->
+
 <script>
-// Starfield animation
+
+/* 01. CONFIGURACIÓN DEL UNIVERSO */
+
 const canvas = document.getElementById("universe");
 const ctx = canvas.getContext("2d");
+
 let stars = [];
 let meteors = [];
 
-function resize(){
- canvas.width = window.innerWidth * devicePixelRatio;
- canvas.height = window.innerHeight * devicePixelRatio;
- ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
- createStars();
-}
-function createStars(){
- stars = [];
- for(let i=0;i<170;i++){
-  stars.push({
-   x:Math.random()*window.innerWidth,
-   y:Math.random()*window.innerHeight,
-   r:Math.random()*1.4+.2,
-   a:Math.random(),
-   speed:Math.random()*.012+.003
-  });
- }
-}
-function draw(){
- ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
- stars.forEach(s=>{
-  s.a += s.speed;
-  const opacity = .25 + Math.abs(Math.sin(s.a))*.65;
-  ctx.beginPath();
-  ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-  ctx.fillStyle=`rgba(225,220,255,${opacity})`;
-  ctx.fill();
- });
- if(Math.random()<.012){
-  meteors.push({
-   x:Math.random()*window.innerWidth,
-   y:Math.random()*window.innerHeight*.4,
-   vx:4+Math.random()*4,
-   vy:3+Math.random()*3,
-   life:0
-  });
- }
- meteors.forEach((m,i)=>{
-  ctx.beginPath();
-  ctx.moveTo(m.x,m.y);
-  ctx.lineTo(m.x-m.vx*5,m.y-m.vy*5);
-  ctx.strokeStyle="rgba(217,189,130,.65)";
-  ctx.lineWidth=1;
-  ctx.stroke();
-  m.x+=m.vx;m.y+=m.vy;m.life++;
-  if(m.life>25)meteors.splice(i,1);
- });
- requestAnimationFrame(draw);
-}
-window.addEventListener("resize",resize);
-resize();draw();
+let screenWidth = window.innerWidth;
+let screenHeight = window.innerHeight;
 
-// Reveal sections on scroll
-const observer = new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   entry.target.classList.add("visible");
-   observer.unobserve(entry.target);
+const reducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
+
+/* 02. AJUSTAR CANVAS */
+
+function resizeCanvas() {
+
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+
+  screenWidth = window.innerWidth;
+  screenHeight = window.innerHeight;
+
+  canvas.width = screenWidth * ratio;
+  canvas.height = screenHeight * ratio;
+
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+  createStars();
+}
+
+/* 03. CREAR ESTRELLAS */
+
+function createStars() {
+
+  stars = [];
+
+  const amount = Math.min(
+    Math.floor((screenWidth * screenHeight) / 5000),
+    260
+  );
+
+  for (let i = 0; i < amount; i++) {
+
+    stars.push({
+      x: Math.random() * screenWidth,
+      y: Math.random() * screenHeight,
+      radius: Math.random() * 1.4 + .2,
+      alpha: Math.random(),
+      speed: Math.random() * .012 + .002,
+      phase: Math.random() * Math.PI * 2
+    });
+
   }
- });
-},{threshold:.12});
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+}
 
-// Birthday surprise
-document.getElementById("blow").addEventListener("click",()=>{
- document.getElementById("surprise").style.display="block";
- document.getElementById("blow").textContent="¡Deseo concedido!";
- document.querySelector(".cake").textContent="🕯️";
+/* 04. DIBUJAR ESTRELLAS */
+
+function drawStars() {
+
+  stars.forEach(star => {
+
+    star.phase += star.speed;
+
+    const opacity =
+      .2 + Math.abs(Math.sin(star.phase)) * .7;
+
+    ctx.beginPath();
+
+    ctx.arc(
+      star.x,
+      star.y,
+      star.radius,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.fillStyle = `rgba(235,230,255,${opacity})`;
+
+    ctx.fill();
+
+  });
+}
+
+/* 05. CREAR METEORITOS */
+
+function createMeteor() {
+
+  if (meteors.length > 4) return;
+
+  meteors.push({
+    x: Math.random() * screenWidth,
+    y: Math.random() * screenHeight * .4,
+    vx: 4 + Math.random() * 4,
+    vy: 3 + Math.random() * 3,
+    life: 0,
+    maxLife: 30
+  });
+
+}
+
+/* 06. DIBUJAR METEORITOS */
+
+function drawMeteors() {
+
+  for (let i = meteors.length - 1; i >= 0; i--) {
+
+    const meteor = meteors[i];
+
+    const opacity = 1 - meteor.life / meteor.maxLife;
+
+    ctx.beginPath();
+
+    ctx.moveTo(meteor.x, meteor.y);
+
+    ctx.lineTo(
+      meteor.x - meteor.vx * 7,
+      meteor.y - meteor.vy * 7
+    );
+
+    ctx.strokeStyle =
+      `rgba(217,189,130,${opacity})`;
+
+    ctx.lineWidth = 1.2;
+
+    ctx.stroke();
+
+    meteor.x += meteor.vx;
+    meteor.y += meteor.vy;
+    meteor.life++;
+
+    if (meteor.life >= meteor.maxLife) {
+      meteors.splice(i, 1);
+    }
+  }
+}
+
+/* 07. ANIMACIÓN */
+
+function animateUniverse() {
+
+  ctx.clearRect(0, 0, screenWidth, screenHeight);
+
+  drawStars();
+
+  if (!reducedMotion && Math.random() < .012) {
+    createMeteor();
+  }
+
+  drawMeteors();
+
+  requestAnimationFrame(animateUniverse);
+}
+
+resizeCanvas();
+animateUniverse();
+
+window.addEventListener("resize", resizeCanvas);
+
+/* 08. BARRA DE PROGRESO */
+
+const progressBar = document.getElementById("progressBar");
+
+function updateProgress() {
+
+  const scrollTop = window.scrollY;
+
+  const scrollHeight =
+    document.documentElement.scrollHeight -
+    window.innerHeight;
+
+  const progress =
+    scrollHeight > 0
+      ? (scrollTop / scrollHeight) * 100
+      : 0;
+
+  progressBar.style.width = progress + "%";
+}
+
+window.addEventListener("scroll", updateProgress);
+
+/* 09. NAVEGACIÓN */
+
+const navbar = document.getElementById("navbar");
+
+function updateNavbar() {
+
+  if (window.scrollY > 60) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+}
+
+window.addEventListener("scroll", updateNavbar);
+
+/* 10. ANIMACIONES AL DESPLAZARSE */
+
+const revealObserver = new IntersectionObserver(
+
+  entries => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("visible");
+
+        revealObserver.unobserve(entry.target);
+
+      }
+
+    });
+
+  },
+
+  {
+    threshold: .12,
+    rootMargin: "0px 0px -30px 0px"
+  }
+
+);
+
+document.querySelectorAll(".reveal, .reveal-left").forEach(
+  element => revealObserver.observe(element)
+);
+
+/* 11. CONFETI */
+
+const confettiColors = [
+  "#d9bd82",
+  "#a18aff",
+  "#f4f0e9",
+  "#b8a3ff",
+  "#d9a9a9",
+  "#9ed6b3"
+];
+
+function launchConfetti() {
+
+  const total = 100;
+
+  for (let i = 0; i < total; i++) {
+
+    const piece = document.createElement("div");
+
+    piece.className = "confetti-piece";
+
+    const color =
+      confettiColors[
+        Math.floor(Math.random() * confettiColors.length)
+      ];
+
+    const duration = 2.5 + Math.random() * 3;
+
+    const drift = (Math.random() - .5) * 350;
+
+    piece.style.left = Math.random() * 100 + "vw";
+
+    piece.style.background = color;
+
+    piece.style.animationDuration = duration + "s";
+
+    piece.style.setProperty("--drift", drift + "px");
+
+    document.body.appendChild(piece);
+
+    setTimeout(() => {
+      piece.remove();
+    }, duration * 1000 + 500);
+
+  }
+}
+
+/* 12. BOTÓN DE CUMPLEAÑOS */
+
+const blowButton = document.getElementById("blowButton");
+const surprise = document.getElementById("surprise");
+const cake = document.getElementById("cake");
+
+let birthdayActivated = false;
+
+blowButton.addEventListener("click", function() {
+
+  if (birthdayActivated) return;
+
+  birthdayActivated = true;
+
+  cake.textContent = "🕯️";
+
+  surprise.style.display = "block";
+
+  this.innerHTML = "<span>Deseo concedido</span> <span>✦</span>";
+
+  this.disabled = true;
+
+  launchConfetti();
+
+  setTimeout(() => {
+
+    surprise.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+  }, 200);
+
 });
+
+/* 13. NAVEGACIÓN SUAVE */
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+  link.addEventListener("click", function(event) {
+
+    const targetId = this.getAttribute("href");
+
+    const target = document.querySelector(targetId);
+
+    if (!target) return;
+
+    event.preventDefault();
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+  });
+
+});
+
+/* 14. COMPROBAR IMÁGENES */
+
+document.querySelectorAll("img").forEach(image => {
+
+  image.addEventListener("error", function() {
+
+    this.setAttribute("data-image-error", "true");
+
+  });
+
+});
+
+/* 15. INICIALIZACIÓN */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  updateProgress();
+  updateNavbar();
+
+});
+
 </script>
+
 </body>
 </html>
