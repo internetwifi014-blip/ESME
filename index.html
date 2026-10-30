@@ -4,36 +4,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080914">
-<meta name="description" content="Una pequeña sorpresa preparada especialmente para Esme.">
-<title>ESME — A Special Universe</title>
+<meta name="theme-color" content="#080713">
+<title>Feliz cumpleaños, Esme</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* =========================================================
-   01. CONFIGURACIÓN GENERAL
-========================================================= */
-
 :root {
-  --background: #080914;
-  --background-light: #101225;
-  --panel: rgba(17, 19, 38, .78);
-  --gold: #d9bd82;
-  --gold-light: #f1dcae;
-  --violet: #a18aff;
-  --violet-light: #c6b6ff;
-  --white: #f5f1ea;
-  --muted: #aaa9ba;
-  --muted-dark: #77778d;
-  --border: rgba(217, 189, 130, .2);
-  --border-light: rgba(255,255,255,.08);
-  --font-display: 'Cormorant Garamond', serif;
-  --font-body: 'DM Sans', sans-serif;
-  --font-code: 'DM Mono', monospace;
-  --transition: .4s ease;
+  --bg: #080713;
+  --purple: #a78bfa;
+  --gold: #e8c98c;
+  --white: #f7f2ff;
+  --muted: #aaa2bc;
 }
 
 * {
@@ -44,275 +28,75 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
 }
 
 body {
-  min-height: 100vh;
-  background: var(--background);
+  background: var(--bg);
   color: var(--white);
-  font-family: var(--font-body);
+  font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
-  line-height: 1.6;
 }
 
-body.no-scroll {
-  overflow: hidden;
-}
-
-::selection {
-  background: rgba(161,138,255,.4);
-  color: white;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font-family: inherit;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* =========================================================
-   02. FONDO Y ATMÓSFERA
-========================================================= */
-
-#universe {
+#stars {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: -5;
-  pointer-events: none;
-}
-
-.aurora {
-  position: fixed;
-  inset: -20%;
-  z-index: -4;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at 20% 25%, rgba(93,64,180,.20), transparent 42%),
-    radial-gradient(ellipse at 80% 60%, rgba(48,92,155,.16), transparent 42%),
-    radial-gradient(ellipse at 50% 100%, rgba(180,139,76,.10), transparent 38%);
-  filter: blur(45px);
-  animation: auroraMove 18s ease-in-out infinite alternate;
-}
-
-@keyframes auroraMove {
-  0% {
-    transform: translate(-2%, 1%) scale(1);
-  }
-  100% {
-    transform: translate(3%, -3%) scale(1.1);
-  }
-}
-
-.background-grid {
-  position: fixed;
-  inset: 0;
   z-index: -3;
-  pointer-events: none;
-  opacity: .12;
-  background-image:
-    linear-gradient(rgba(161,138,255,.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(161,138,255,.08) 1px, transparent 1px);
-  background-size: 75px 75px;
-  mask-image: linear-gradient(to bottom, transparent, black 30%, transparent 95%);
 }
 
-.noise {
+.ambient {
   position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 30;
-  opacity: .025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-}
-
-.glow-orb {
-  position: fixed;
-  width: 300px;
-  height: 300px;
+  width: 600px;
+  height: 600px;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: .09;
+  filter: blur(130px);
+  opacity: .17;
   pointer-events: none;
   z-index: -2;
 }
 
-.orb-one {
-  top: 20%;
+.ambient.one {
+  background: #7144bd;
+  top: -250px;
   left: -200px;
-  background: #8063ff;
 }
 
-.orb-two {
-  bottom: 5%;
-  right: -200px;
-  background: #c7a46c;
+.ambient.two {
+  background: #b78b50;
+  right: -300px;
+  bottom: -250px;
 }
 
-/* =========================================================
-   03. BARRA DE PROGRESO
-========================================================= */
-
-.progress-track {
+nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 2px;
-  z-index: 100;
-  background: transparent;
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--violet), var(--gold));
-  box-shadow: 0 0 12px var(--gold);
-}
-
-/* =========================================================
-   04. NAVEGACIÓN
-========================================================= */
-
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 50;
+  padding: 22px 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 7%;
+  z-index: 20;
+  background: rgba(8,7,19,.65);
+  backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255,255,255,.06);
-  background: rgba(7,8,18,.68);
-  backdrop-filter: blur(20px);
-  transition: var(--transition);
-}
-
-.navbar.scrolled {
-  padding-top: 13px;
-  padding-bottom: 13px;
-  background: rgba(7,8,18,.92);
 }
 
 .logo {
-  font-family: var(--font-code);
-  font-size: 11px;
-  letter-spacing: 3px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  letter-spacing: 2px;
   color: var(--gold);
 }
 
-.nav-links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 10px;
+.nav-link {
   color: var(--muted);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  transition: var(--transition);
-}
-
-.nav-links a:hover {
-  color: var(--gold);
-}
-
-.nav-status {
-  font: 9px var(--font-code);
-  color: #aaa9ba;
-  letter-spacing: 1px;
-}
-
-.status-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #8bd5a8;
-  margin-right: 8px;
-  box-shadow: 0 0 10px #8bd5a8;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  50% { opacity: .4; }
-}
-
-/* =========================================================
-   05. ELEMENTOS GENERALES
-========================================================= */
-
-.container {
-  width: min(1000px, 88%);
-  margin: auto;
-}
-
-.section {
-  padding: 110px 0;
-  position: relative;
-}
-
-.section-tag {
-  font: 10px var(--font-code);
-  color: var(--gold);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-
-.section-heading {
-  font: 500 clamp(40px, 7vw, 68px)/1.05 var(--font-display);
-  color: var(--white);
-  margin-bottom: 25px;
-}
-
-.section-description {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.9;
-  max-width: 600px;
-  font-weight: 300;
-}
-
-.gold-line {
-  height: 1px;
-  width: 65px;
-  background: var(--gold);
-  margin: 25px 0;
-  box-shadow: 0 0 12px rgba(217,189,130,.4);
-}
-
-.eyebrow {
-  font: 10px var(--font-code);
-  color: var(--gold);
-  letter-spacing: 5px;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
-
-.text-gradient {
-  background: linear-gradient(120deg, #fff, var(--gold), var(--violet-light));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* =========================================================
-   06. PORTADA
-========================================================= */
 
 .hero {
   min-height: 100vh;
@@ -321,541 +105,304 @@ img {
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 120px 24px 80px;
   position: relative;
-  padding: 130px 0 80px;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  animation: heroEnter 1.5s ease both;
-}
-
-@keyframes heroEnter {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-overline {
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
   margin-bottom: 30px;
+  animation: fadeUp 1s both;
 }
 
 .hero h1 {
-  font: 500 clamp(80px, 17vw, 165px)/.85 var(--font-display);
-  letter-spacing: -5px;
-  margin: 15px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(65px, 12vw, 135px);
+  font-weight: 400;
+  line-height: .9;
+  letter-spacing: -3px;
+  animation: fadeUp 1.2s both;
+}
+
+.hero h1 span {
+  display: block;
+  font-style: italic;
+  color: var(--purple);
 }
 
 .hero-subtitle {
   color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 4px;
   margin-top: 35px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  animation: fadeUp 1.5s both;
+}
+
+.scroll {
+  position: absolute;
+  bottom: 35px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #817991;
+  text-transform: uppercase;
+}
+
+.scroll::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 45px;
+  margin: 15px auto 0;
+  background: linear-gradient(var(--purple), transparent);
+}
+
+section {
+  padding: 110px 22px;
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+}
+
+.section-label {
+  text-align: center;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.section-title {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(40px, 7vw, 68px);
+  margin-bottom: 55px;
+}
+
+.intro {
+  text-align: center;
+  max-width: 650px;
+  margin: auto;
+}
+
+.intro p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 2;
   font-weight: 300;
 }
 
-.hero-caption {
-  color: var(--muted-dark);
-  font: 9px var(--font-code);
-  letter-spacing: 3px;
-  margin-top: 55px;
-}
-
-.hero-line {
-  height: 70px;
-  width: 1px;
-  background: linear-gradient(transparent, var(--gold));
-  margin: 45px auto 0;
-}
-
-.hero-code {
-  position: absolute;
-  top: 28%;
-  right: 1%;
-  width: 210px;
-  padding: 17px;
-  background: rgba(10,11,25,.55);
-  border: 1px solid rgba(161,138,255,.2);
-  border-radius: 7px;
-  text-align: left;
-  transform: rotate(3deg);
-  opacity: .65;
-  font: 9px/2 var(--font-code);
-  color: #8c8ca6;
-}
-
-.hero-code .purple { color: #c59bff; }
-.hero-code .green { color: #9ed6b3; }
-.hero-code .gold { color: var(--gold); }
-
-.hero-orbit {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border: 1px solid rgba(217,189,130,.08);
-  border-radius: 50%;
-  animation: orbit 40s linear infinite;
-  pointer-events: none;
-}
-
-.hero-orbit::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -4px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+.divider {
+  width: 70px;
+  height: 1px;
+  margin: 35px auto;
   background: var(--gold);
-  box-shadow: 0 0 20px var(--gold);
-}
-
-@keyframes orbit {
-  to { transform: rotate(360deg); }
-}
-
-/* =========================================================
-   07. BOTÓN GENERAL
-========================================================= */
-
-.button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  padding: 15px 28px;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  background: transparent;
-  font: 10px var(--font-code);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: .35s ease;
-}
-
-.button:hover {
-  background: var(--gold);
-  color: #11111d;
-  box-shadow: 0 0 35px rgba(217,189,130,.2);
-  transform: translateY(-3px);
-}
-
-.button:disabled {
   opacity: .6;
-  cursor: default;
-  transform: none;
 }
 
-/* =========================================================
-   08. INTRODUCCIÓN
-========================================================= */
-
-.intro-grid {
-  display: grid;
-  grid-template-columns: 1fr .8fr;
-  gap: 70px;
-  align-items: center;
-}
-
-.intro-side {
+.letter {
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.045),
+    rgba(255,255,255,.012)
+  );
+  border: 1px solid rgba(232,201,140,.2);
+  padding: clamp(28px, 7vw, 65px);
   position: relative;
-  min-height: 300px;
-  border: 1px solid var(--border);
-  background: linear-gradient(145deg, rgba(28,26,53,.65), rgba(10,11,25,.7));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  box-shadow: 0 25px 90px rgba(0,0,0,.25);
 }
 
-.intro-side::before {
+.letter::before {
   content: "✦";
-  font-size: 100px;
+  position: absolute;
+  top: 20px;
+  right: 25px;
   color: var(--gold);
   opacity: .7;
-  animation: float 5s ease-in-out infinite;
 }
 
-.intro-side::after {
-  content: "A SPECIAL DAY";
-  position: absolute;
-  bottom: 20px;
-  font: 9px var(--font-code);
-  letter-spacing: 4px;
-  color: var(--muted);
-}
-
-@keyframes float {
-  50% { transform: translateY(-13px); }
-}
-
-/* =========================================================
-   09. CARTA
-========================================================= */
-
-.letter-section {
-  padding-top: 120px;
-}
-
-.letter-card {
-  position: relative;
-  padding: clamp(28px, 6vw, 65px);
-  border: 1px solid var(--border);
-  background: linear-gradient(145deg, rgba(23,24,45,.9), rgba(10,11,23,.88));
-  box-shadow: 0 30px 100px rgba(0,0,0,.25);
-  overflow: hidden;
-}
-
-.letter-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 40px;
-  width: 90px;
-  height: 1px;
-  background: var(--gold);
-  box-shadow: 0 0 15px var(--gold);
-}
-
-.letter-card::after {
-  content: "ESME";
-  position: absolute;
-  bottom: -30px;
-  right: 15px;
-  font: 120px var(--font-display);
-  color: rgba(255,255,255,.018);
-  pointer-events: none;
-}
-
-.letter-card p {
-  position: relative;
-  z-index: 1;
-  color: #c9c5d0;
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 2.1;
-  margin-bottom: 24px;
-}
-
-.letter-card p:last-of-type {
-  margin-bottom: 0;
-}
-
-.letter-signature {
-  margin-top: 38px;
-  font: italic 34px var(--font-display);
+.letter-date {
   color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 35px;
 }
 
-/* =========================================================
-   10. FRASE DESTACADA
-========================================================= */
+.letter h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+
+.letter p {
+  color: #c8c0d4;
+  font-size: 15px;
+  line-height: 2.1;
+  margin-bottom: 22px;
+  font-weight: 300;
+}
+
+.letter .signature {
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 27px;
+  font-style: italic;
+  margin-top: 35px;
+}
 
 .quote-section {
-  padding: 80px 0;
   text-align: center;
+  padding: 120px 25px;
 }
 
 .quote-mark {
-  font: 90px var(--font-display);
   color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 75px;
   line-height: .7;
-  opacity: .8;
 }
 
-.quote-text {
-  max-width: 750px;
+.quote {
+  max-width: 850px;
   margin: 25px auto;
-  font: 400 clamp(27px, 5vw, 42px)/1.35 var(--font-display);
-  color: #e7dfd4;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 6vw, 62px);
+  line-height: 1.2;
+  font-style: italic;
+  color: var(--white);
 }
 
-.quote-author {
-  color: var(--gold);
-  font: 9px var(--font-code);
-  letter-spacing: 3px;
+.quote span {
+  color: var(--purple);
 }
 
-/* =========================================================
-   11. DETALLES TECNOLÓGICOS
-========================================================= */
-
-.tech-section {
-  padding: 80px 0;
-}
-
-.tech-heading {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-}
-
-.tech-card {
-  padding: 24px 16px;
-  background: rgba(17,19,38,.65);
-  border: 1px solid rgba(161,138,255,.15);
-  text-align: center;
-  transition: .4s ease;
-}
-
-.tech-card:hover {
-  border-color: rgba(217,189,130,.5);
-  transform: translateY(-7px);
-  background: rgba(35,31,58,.7);
-}
-
-.tech-icon {
-  font: 23px var(--font-code);
-  color: var(--violet-light);
-  margin-bottom: 15px;
-}
-
-.tech-name {
-  font: 10px var(--font-code);
-  color: var(--gold);
-  letter-spacing: 2px;
-}
-
-.tech-description {
-  font-size: 10px;
+.quote-caption {
   color: var(--muted);
-  margin-top: 8px;
-  line-height: 1.7;
-}
-
-/* =========================================================
-   12. RECUADRO PERSONAL
-========================================================= */
-
-.personal-section {
-  padding: 100px 0 90px;
-}
-
-.personal-box {
-  position: relative;
-  padding: clamp(28px, 6vw, 60px);
-  border: 1px solid rgba(217,189,130,.38);
-  background:
-    radial-gradient(ellipse at 100% 0%, rgba(161,138,255,.09), transparent 50%),
-    linear-gradient(135deg, rgba(42,34,52,.7), rgba(14,15,29,.9));
-  box-shadow: 0 30px 100px rgba(0,0,0,.2);
-}
-
-.personal-label {
-  position: absolute;
-  top: -10px;
-  left: 28px;
-  padding: 0 13px;
-  background: #11111f;
-  color: var(--gold);
-  font: 9px var(--font-code);
+  font-size: 11px;
   letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 30px;
 }
 
-.personal-box p {
-  font-size: 15px;
+.thanks {
+  max-width: 780px;
+  margin: auto;
+  padding: clamp(28px, 6vw, 55px);
+  border: 1px solid rgba(167,139,250,.25);
+  background: rgba(167,139,250,.055);
+  position: relative;
+}
+
+.thanks::after {
+  content: "✧";
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  color: var(--purple);
+  font-size: 25px;
+}
+
+.thanks h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 25px;
+  color: var(--gold);
+}
+
+.thanks p {
+  color: #c8c0d4;
   line-height: 2.1;
+  font-size: 14px;
   font-weight: 300;
-  color: #d7d0dc;
 }
-
-.personal-sign {
-  font: italic 26px var(--font-display);
-  color: var(--gold);
-  margin-top: 28px;
-}
-
-/* =========================================================
-   13. GALERÍA
-========================================================= */
-
-.gallery-section {
-  padding: 80px 0 100px;
-}
-
-.gallery-frame {
-  width: min(430px, 100%);
-  margin: 40px auto 0;
-  padding: 12px;
-  border: 1px solid var(--border);
-  background: rgba(18,19,36,.8);
-  box-shadow: 0 30px 100px rgba(0,0,0,.35);
-  position: relative;
-}
-
-.gallery-frame::before,
-.gallery-frame::after {
-  content: "";
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  border-color: var(--gold);
-  border-style: solid;
-  opacity: .8;
-}
-
-.gallery-frame::before {
-  top: -5px;
-  left: -5px;
-  border-width: 1px 0 0 1px;
-}
-
-.gallery-frame::after {
-  bottom: -5px;
-  right: -5px;
-  border-width: 0 1px 1px 0;
-}
-
-.gallery-image {
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  background: #111;
-}
-
-.gallery-caption {
-  padding: 18px 10px 8px;
-  text-align: center;
-  font: 10px var(--font-code);
-  letter-spacing: 2px;
-  color: var(--muted);
-}
-
-/* =========================================================
-   14. PASTEL
-========================================================= */
 
 .cake-section {
   text-align: center;
-  padding: 100px 0 130px;
-}
-
-.cake-stage {
-  position: relative;
-  padding: 40px 0;
+  padding: 120px 20px 140px;
 }
 
 .cake {
-  display: block;
   font-size: 100px;
-  filter: drop-shadow(0 0 30px rgba(217,189,130,.25));
-  animation: cakeFloat 3.5s ease-in-out infinite;
+  margin: 25px 0;
+  display: inline-block;
+  filter: drop-shadow(0 0 25px rgba(232,201,140,.2));
+  animation: cakeFloat 3s ease-in-out infinite;
 }
 
-@keyframes cakeFloat {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-15px) rotate(2deg); }
-}
-
-.cake-section h2 {
-  font: 500 clamp(40px, 7vw, 60px) var(--font-display);
-  color: var(--gold);
-}
-
-.cake-section .cake-description {
-  margin-top: 15px;
+.cake-text {
   color: var(--muted);
-  font-size: 13px;
-  font-weight: 300;
+  margin: 15px 0 30px;
+  font-size: 14px;
 }
 
-.cake-button {
-  margin-top: 30px;
+button {
+  border: 1px solid rgba(232,201,140,.65);
+  color: var(--gold);
+  background: transparent;
+  padding: 16px 35px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: .3s;
+}
+
+button:hover {
+  background: var(--gold);
+  color: #17111f;
+  box-shadow: 0 0 35px rgba(232,201,140,.2);
+  transform: translateY(-3px);
 }
 
 .surprise {
   display: none;
-  margin-top: 45px;
-  animation: surpriseIn 1.2s ease both;
+  margin-top: 35px;
+  animation: fadeUp .8s both;
 }
 
-@keyframes surpriseIn {
-  from {
-    opacity: 0;
-    transform: translateY(25px) scale(.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.surprise.show {
+  display: block;
 }
 
-.surprise img {
-  width: min(350px, 90%);
-  margin: auto;
-  padding: 9px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 70px rgba(0,0,0,.35);
+.surprise h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 8vw, 65px);
+  color: var(--purple);
+  margin-top: 15px;
 }
 
-.surprise h3 {
-  margin-top: 25px;
-  font: italic 40px var(--font-display);
+.surprise p {
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+footer {
+  border-top: 1px solid rgba(255,255,255,.07);
+  text-align: center;
+  padding: 35px 20px;
+  color: #766d84;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+footer span {
   color: var(--gold);
 }
-
-/* =========================================================
-   15. CONFETI
-========================================================= */
-
-.confetti-piece {
-  position: fixed;
-  top: -20px;
-  z-index: 80;
-  width: 8px;
-  height: 13px;
-  pointer-events: none;
-  animation: confettiFall linear forwards;
-}
-
-@keyframes confettiFall {
-  to {
-    transform: translate3d(var(--drift), 110vh, 0) rotate(850deg);
-    opacity: 0;
-  }
-}
-
-/* =========================================================
-   16. FOOTER
-========================================================= */
-
-.footer {
-  border-top: 1px solid rgba(255,255,255,.08);
-  padding: 35px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  color: var(--muted-dark);
-  font: 9px var(--font-code);
-  letter-spacing: 1.5px;
-}
-
-.footer-highlight {
-  color: var(--gold);
-}
-
-/* =========================================================
-   17. ANIMACIONES DE ENTRADA
-========================================================= */
 
 .reveal {
   opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 1s ease, transform 1s ease;
+  transform: translateY(30px);
+  transition: opacity .9s ease, transform .9s ease;
 }
 
 .reveal.visible {
@@ -863,136 +410,54 @@ img {
   transform: translateY(0);
 }
 
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.reveal-left.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* =========================================================
-   18. RESPONSIVE
-========================================================= */
-
-@media (max-width: 800px) {
-  .nav-links {
-    display: none;
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
   }
-
-  .hero-code {
-    right: -3%;
-    top: 17%;
-    width: 150px;
-    font-size: 7px;
-    opacity: .35;
-  }
-
-  .hero-orbit {
-    width: 350px;
-    height: 350px;
-  }
-
-  .intro-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .intro-side {
-    min-height: 190px;
-  }
-
-  .tech-grid {
-    grid-template-columns: repeat(2, 1fr);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 520px) {
-  .navbar {
-    padding: 18px 6%;
+@keyframes cakeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@media(max-width:600px) {
+  nav {
+    padding: 18px 22px;
   }
 
   .logo {
+    font-size: 22px;
+  }
+
+  .nav-link {
     font-size: 9px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
   }
 
-  .nav-status {
-    font-size: 8px;
+  section {
+    padding: 85px 18px;
   }
 
-  .container {
-    width: 88%;
-  }
-
-  .hero {
-    min-height: 95vh;
-  }
-
-  .hero h1 {
-    letter-spacing: -2px;
-  }
-
-  .hero-subtitle {
-    font-size: 9px;
-    letter-spacing: 2px;
-  }
-
-  .hero-code {
-    top: 14%;
-    width: 130px;
-    opacity: .3;
-  }
-
-  .hero-orbit {
-    width: 270px;
-    height: 270px;
-  }
-
-  .section {
-    padding: 75px 0;
-  }
-
-  .letter-card p,
-  .personal-box p {
+  .letter p {
     font-size: 14px;
-    line-height: 2;
   }
 
-  .tech-card {
-    padding: 20px 10px;
-  }
-
-  .tech-description {
-    font-size: 9px;
-  }
-
-  .cake {
-    font-size: 85px;
-  }
-
-  .footer {
-    flex-direction: column;
-    text-align: center;
-    font-size: 8px;
+  .thanks p {
+    font-size: 13px;
   }
 }
 
-/* =========================================================
-   19. ACCESIBILIDAD
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
     animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
     transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 </style>
@@ -1000,714 +465,337 @@ img {
 
 <body>
 
-<!-- =======================================================
-     FONDO
-======================================================= -->
+<canvas id="stars"></canvas>
+<div class="ambient one"></div>
+<div class="ambient two"></div>
 
-<canvas id="universe" aria-hidden="true"></canvas>
-<div class="aurora"></div>
-<div class="background-grid"></div>
-<div class="noise"></div>
-<div class="glow-orb orb-one"></div>
-<div class="glow-orb orb-two"></div>
-
-<div class="progress-track">
-  <div class="progress-bar" id="progressBar"></div>
-</div>
-
-<!-- =======================================================
-     NAVEGACIÓN
-======================================================= -->
-
-<nav class="navbar" id="navbar">
-  <a href="#home" class="logo">E / SPECIAL EDITION</a>
-
-  <ul class="nav-links">
-    <li><a href="#home">Inicio</a></li>
-    <li><a href="#message">Mensaje</a></li>
-    <li><a href="#personal">Una nota</a></li>
-    <li><a href="#birthday">Final</a></li>
-  </ul>
-
-  <div class="nav-status">
-  
-<span class="status-dot"></span>
-ONLINE
-</div>
+<nav>
+  <div class="logo">E.</div>
+  <a class="nav-link" href="#carta">Un mensaje para ti</a>
 </nav>
 
-<main>
+<header class="hero">
+  <div class="eyebrow">Un día especial · Para alguien especial</div>
 
-<!-- PORTADA -->
+  <h1>
+    Feliz
+    <span>cumpleaños,</span>
+    Esme.
+  </h1>
 
-<section class="hero" id="home">
+  <p class="hero-subtitle">
+    Hoy el universo tiene una razón más para brillar.
+  </p>
 
-  <div class="hero-orbit"></div>
+  <div class="scroll">Desliza para descubrir</div>
+</header>
 
-  <div class="hero-code" aria-hidden="true">
-    <span class="purple">class Birthday {</span><br>
-    &nbsp; <span class="green">String</span> name = "Esme";<br>
-    &nbsp; <span class="green">boolean</span> special = true;<br>
-    &nbsp; <span class="gold">void</span> celebrate() {<br>
-    &nbsp;&nbsp; System.out.println(<br>
-    &nbsp;&nbsp; "Happy Birthday");<br>
-    &nbsp; }<br>
-    <span class="purple">}</span>
-  </div>
+<section class="reveal">
+  <div class="container intro">
+    <div class="section-label">Antes de empezar</div>
+    <h2 class="section-title">Este día es tuyo.</h2>
 
-  <div class="hero-content">
-    <div class="eyebrow hero-overline">
-      A LITTLE SOMETHING FOR YOU
-    </div>
+    <p>
+      Hay personas que tienen una manera especial de dejar
+      algo bonito en los demás. Por eso hoy quería dedicarte
+      unas palabras y recordarte lo valiosa que eres.
+    </p>
 
-    <h1 class="text-gradient">Esme.</h1>
+    <div class="divider"></div>
 
-    <div class="hero-subtitle">
-      SOME PEOPLE DESERVE THEIR OWN UNIVERSE
-    </div>
-
-    <div class="hero-line"></div>
-
-    <div class="hero-caption">
-      SCROLL TO EXPLORE &nbsp; ↓
-    </div>
-  </div>
-</section>
-
-<!-- INTRODUCCIÓN -->
-
-<section class="section reveal">
-  <div class="container intro-grid">
-
-    <div>
-      <div class="section-tag">00 — THE BEGINNING</div>
-
-      <h2 class="section-heading">
-        Un día especial merece algo especial.
-      </h2>
-
-      <div class="gold-line"></div>
-
-      <p class="section-description">
-        Hay fechas que merecen detener un momento el tiempo.
-        Hoy es una de ellas. Preparé este pequeño espacio
-        para dedicarte unas palabras y desearte todo lo bonito
-        que mereces.
-      </p>
-    </div>
-
-    <div class="intro-side"></div>
-
+    <p>
+      Espero que este nuevo año de vida venga acompañado
+      de momentos que te hagan feliz, personas que te quieran
+      sinceramente y oportunidades para cumplir todo aquello
+      que te propones.
+    </p>
   </div>
 </section>
 
-<!-- CARTA PRINCIPAL -->
-
-<section class="section letter-section reveal" id="message">
-
+<section id="carta" class="reveal">
   <div class="container">
+    <div class="section-label">Con cariño</div>
+    <h2 class="section-title">Unas palabras para ti</h2>
 
-    <div class="section-tag">01 — A MESSAGE FOR YOU</div>
+    <article class="letter">
+      <div class="letter-date">29 de octubre · Un día para celebrar</div>
 
-    <h2 class="section-heading">Hoy es tu día.</h2>
-
-    <div class="letter-card">
+      <h3>Querida Esme:</h3>
 
       <p>
-        Espero que hoy tengas un día bonito, de esos que se
-        quedan guardados en la memoria por las pequeñas cosas,
-        por las personas que te rodean y por todos esos momentos
-        que te sacan una sonrisa.
+        Feliz cumpleaños. Espero de corazón que hoy tengas
+        un día bonito, lleno de sonrisas, tranquilidad y
+        momentos que quieras guardar para siempre.
       </p>
 
       <p>
-        Quiero desearte que nunca pierdas esa actitud que te
-        caracteriza, esa personalidad tan tuya que te hace ser
-        quien eres. No dejes que las circunstancias, las
-        opiniones de los demás o los momentos difíciles cambien
-        esa esencia que te hace especial.
+        Quiero que nunca dudes de la persona que eres.
+        Tienes una manera muy tuya de ser, una personalidad
+        que te hace diferente y una luz que no deberías
+        permitir que nadie apague.
       </p>
 
       <p>
-        Que cada meta que te propongas te acerque un poco más
-        a la vida que quieres construir. Y que en cada paso que
-        des, incluso cuando las cosas no salgan como esperabas,
-        puedas sentirte orgullosa de ti misma. De tus decisiones,
-        de tus esfuerzos, de tus avances y también de las veces
-        que tuviste que empezar de nuevo.
+        Sigue persiguiendo tus metas, incluso cuando las
+        cosas no salgan como esperabas. No te compares con
+        los demás ni sientas que tienes que llegar a algún
+        lugar antes de tiempo. Cada paso que das cuenta,
+        incluso aquellos que parecen pequeños.
       </p>
 
       <p>
-        Ojalá nunca te falten motivos para seguir creciendo,
-        personas que valoren lo que eres y oportunidades para
-        demostrarte todo lo que eres capaz de lograr. Disfruta
-        de lo que tienes, persigue lo que sueñas y aprende a
-        reconocer lo mucho que vales.
+        Ojalá este nuevo año te encuentre más segura de ti
+        misma, orgullosa de lo que has conseguido y con
+        muchas ganas de descubrir todo lo que todavía
+        puedes lograr.
       </p>
 
       <p>
-        Y sobre todo, nunca sientas que tienes que dejar de ser
-        tú para encajar en algún lugar. Tu forma de ser, tus
-        ocurrencias, tu carácter y esa manera tan particular de
-        ver las cosas también forman parte de lo que te hace única.
+        Mereces vivir experiencias bonitas, reír hasta que
+        te duela el estómago, cumplir tus sueños y encontrar
+        motivos para sentirte orgullosa de ti misma.
       </p>
 
       <p>
-        Te deseo muchísima felicidad, tranquilidad, éxitos y
-        momentos que te recuerden lo bonito que puede ser vivir.
-        Que este nuevo año de vida venga con experiencias
-        increíbles y razones para sentirte orgullosa de la
-        persona en la que te estás convirtiendo.
+        Nunca olvides lo mucho que vales. Y cuando tengas
+        días difíciles, recuerda que un mal momento no
+        define tu historia ni todo lo bonito que todavía
+        te espera.
       </p>
 
-      <div class="letter-signature">
-        Feliz cumpleaños, Esme.
-      </div>
+      <p>
+        Espero que la vida te sorprenda de maneras
+        maravillosas. Que nunca te falten razones para
+        sonreír y que siempre tengas el valor de seguir
+        siendo tú.
+      </p>
 
-    </div>
+      <div class="divider" style="margin-left:0"></div>
+
+      <p class="signature">Con mucho cariño.</p>
+    </article>
   </div>
 </section>
-
-<!-- FRASE -->
 
 <section class="quote-section reveal">
-  <div class="container">
+  <div class="quote-mark">“</div>
 
-    <div class="quote-mark">“</div>
+  <p class="quote">
+    No dejes que nada apague ese
+    <span>brillo que tienes en tus ojos.</span>
+  </p>
 
-    <p class="quote-text">
-      No dejes que nada apague ese brillo que tienes en tus ojos.
+  <div class="quote-caption">Nunca lo olvides, Esme.</div>
+</section>
+
+<section class="reveal">
+  <div class="thanks">
+    <h3>Y antes de terminar...</h3>
+
+    <p>
+      Capaz nunca te dije esto, pero te agradezco demasiado
+      por todas las cosas que me dijiste, que en un primer
+      momento no entendí, pero que ahora veo con claridad.
+      Eres una persona maravillosa, nunca dudes de eso.
+      Espero que encuentres en cada momento un motivo para
+      sonreír, sin importar qué tan mala sea la situación.
+      Nunca pierdas esa manera tan tuya de ser y recuerda
+      que siempre hay algo por lo que vale la pena seguir.
+      Y que quería meterte un tabazo antes que te vayas
+      y ya ctm JAJAJA.
     </p>
-
-    <div class="quote-author">
-      A REMINDER FOR YOU
-    </div>
-
   </div>
 </section>
 
-<!-- DETALLES TECNOLÓGICOS -->
+<section class="cake-section reveal">
+  <div class="section-label">Un último detalle</div>
 
-<section class="tech-section reveal">
-  <div class="container">
+  <h2 class="section-title">Pide un deseo.</h2>
 
-    <div class="tech-heading">
-      <div class="section-tag">02 — DIGITAL CONSTELLATION</div>
+  <div class="cake">🎂</div>
 
-      <h2 class="section-heading">
-        A universe of possibilities.
-      </h2>
+  <p class="cake-text">
+    Cierra los ojos, piensa en algo bonito y sopla la vela.
+  </p>
 
-      <p class="section-description" style="margin:auto">
-        Un pequeño detalle inspirado en el mundo de la tecnología.
-      </p>
-    </div>
+  <button id="blow">Sopla la vela</button>
 
-    <div class="tech-grid">
-
-      <div class="tech-card">
-        <div class="tech-icon">JS</div>
-        <div class="tech-name">JAVASCRIPT</div>
-        <div class="tech-description">Pequeñas interacciones.</div>
-      </div>
-
-      <div class="tech-card">
-        <div class="tech-icon">C++</div>
-        <div class="tech-name">C PLUS PLUS</div>
-        <div class="tech-description">Ideas que toman forma.</div>
-      </div>
-
-      <div class="tech-card">
-        <div class="tech-icon">Py</div>
-        <div class="tech-name">PYTHON</div>
-        <div class="tech-description">Nuevos caminos.</div>
-      </div>
-
-      <div class="tech-card">
-        <div class="tech-icon">J</div>
-        <div class="tech-name">JAVA</div>
-        <div class="tech-description">Un proyecto especial.</div>
-      </div>
-
-    </div>
+  <div class="surprise" id="surprise">
+    <div style="font-size:55px">✨</div>
+    <h2>feliz cumpleaños 🖕</h2>
+    <p>JAJAJA, espero que sonrías. Que tengas un bonito día, Esme.</p>
   </div>
 </section>
 
-<!-- AGRADECIMIENTO PERSONAL -->
-
-<section class="personal-section reveal" id="personal">
-
-  <div class="container">
-
-    <div class="personal-box">
-
-      <div class="personal-label">
-        A PERSONAL NOTE
-      </div>
-
-      <p>
-        Capaz nunca te dije esto, pero te agradezco demasiado
-        por todas las cosas que me dijiste, que en un primer
-        momento no entendí, pero que ahora veo con claridad.
-        Eres una persona maravillosa, nunca dudes de eso.
-        Espero que encuentres en cada momento un motivo para
-        sonreír, sin importar qué tan mala sea la situación.
-        Nunca pierdas esa manera tan tuya de ser y recuerda
-        que siempre hay algo por lo que vale la pena seguir.
-        Y que quería meterte un tabazo antes que te vayas y
-        ya ctm JAJAJA.
-      </p>
-
-      <div class="personal-sign">Con cariño.</div>
-
-    </div>
-  </div>
-</section>
-
-<!-- GALERÍA -->
-
-<section class="gallery-section reveal">
-
-  <div class="container">
-
-    <div class="section-tag">03 — A LITTLE MEMORY</div>
-
-    <h2 class="section-heading">
-      One moment, one memory.
-    </h2>
-
-    <p class="section-description">
-      Un pequeño espacio para guardar un recuerdo.
-    </p>
-
-    <div class="gallery-frame">
-
-      <img
-        src="foto/foto.jpg"
-        alt="Un recuerdo especial"
-        class="gallery-image"
-        loading="lazy"
-        onerror="this.style.display='none'; document.getElementById('imageError').style.display='block';"
-      >
-
-      <div id="imageError" style="display:none; padding:40px 15px; text-align:center; color:#aaa9ba; font-size:12px;">
-        No se encontró la fotografía. Revisa que esté en la carpeta foto con el nombre foto.jpg.
-      </div>
-
-      <div class="gallery-caption">
-        A MEMORY WORTH KEEPING
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PASTEL -->
-
-<section class="cake-section reveal" id="birthday">
-
-  <div class="container">
-
-    <div class="section-tag">04 — MAKE A WISH</div>
-
-    <h2>One more thing...</h2>
-
-    <p class="cake-description">
-      Hay algo que todavía tienes que hacer.
-    </p>
-
-    <div class="cake-stage">
-      <span class="cake" id="cake">🎂</span>
-    </div>
-
-    <button class="button cake-button" id="blowButton">
-      <span>Sopla la vela</span>
-      <span>✦</span>
-    </button>
-
-    <div class="surprise" id="surprise">
-
-      <img src="foto/foto.jpg" alt="Sorpresa de cumpleaños">
-
-      <h3>feliz cumpleaños 🖕</h3>
-
-    </div>
-
-  </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-
-<footer class="footer">
-
-  <div>DESIGNED WITH CARE · 2026</div>
-
-  <div class="footer-highlight">
-    Me lo saludas al Nill.
-  </div>
-
+<footer>
+  Hecho con cariño · <span>Me lo saludas al Nill.</span>
 </footer>
 
-<!-- JAVASCRIPT -->
-
 <script>
-
-/* 01. CONFIGURACIÓN DEL UNIVERSO */
-
-const canvas = document.getElementById("universe");
+const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 
+let width, height;
 let stars = [];
 let meteors = [];
 
-let screenWidth = window.innerWidth;
-let screenHeight = window.innerHeight;
-
-const reducedMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-).matches;
-
-/* 02. AJUSTAR CANVAS */
-
-function resizeCanvas() {
-
-  const ratio = Math.min(window.devicePixelRatio || 1, 2);
-
-  screenWidth = window.innerWidth;
-  screenHeight = window.innerHeight;
-
-  canvas.width = screenWidth * ratio;
-  canvas.height = screenHeight * ratio;
-
-  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-
-  createStars();
-}
-
-/* 03. CREAR ESTRELLAS */
-
-function createStars() {
+function resize() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
 
   stars = [];
 
   const amount = Math.min(
-    Math.floor((screenWidth * screenHeight) / 5000),
-    260
+    180,
+    Math.floor((width * height) / 6500)
   );
 
   for (let i = 0; i < amount; i++) {
-
     stars.push({
-      x: Math.random() * screenWidth,
-      y: Math.random() * screenHeight,
-      radius: Math.random() * 1.4 + .2,
-      alpha: Math.random(),
-      speed: Math.random() * .012 + .002,
-      phase: Math.random() * Math.PI * 2
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 1.5 + .2,
+      alpha: Math.random() * .7 + .2,
+      speed: Math.random() * .012 + .003
     });
-
   }
 }
-
-/* 04. DIBUJAR ESTRELLAS */
-
-function drawStars() {
-
-  stars.forEach(star => {
-
-    star.phase += star.speed;
-
-    const opacity =
-      .2 + Math.abs(Math.sin(star.phase)) * .7;
-
-    ctx.beginPath();
-
-    ctx.arc(
-      star.x,
-      star.y,
-      star.radius,
-      0,
-      Math.PI * 2
-    );
-
-    ctx.fillStyle = `rgba(235,230,255,${opacity})`;
-
-    ctx.fill();
-
-  });
-}
-
-/* 05. CREAR METEORITOS */
 
 function createMeteor() {
-
-  if (meteors.length > 4) return;
-
-  meteors.push({
-    x: Math.random() * screenWidth,
-    y: Math.random() * screenHeight * .4,
-    vx: 4 + Math.random() * 4,
-    vy: 3 + Math.random() * 3,
-    life: 0,
-    maxLife: 30
-  });
-
+  if (meteors.length < 2 && Math.random() < .012) {
+    meteors.push({
+      x: Math.random() * width,
+      y: -20,
+      length: Math.random() * 100 + 50,
+      speed: Math.random() * 5 + 4,
+      opacity: 1
+    });
+  }
 }
 
-/* 06. DIBUJAR METEORITOS */
+function draw() {
+  ctx.clearRect(0, 0, width, height);
 
-function drawMeteors() {
+  stars.forEach(star => {
+    star.alpha += star.speed;
 
-  for (let i = meteors.length - 1; i >= 0; i--) {
-
-    const meteor = meteors[i];
-
-    const opacity = 1 - meteor.life / meteor.maxLife;
+    if (star.alpha > .9 || star.alpha < .2) {
+      star.speed *= -1;
+    }
 
     ctx.beginPath();
+    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(230,220,255,${star.alpha})`;
+    ctx.fill();
+  });
 
-    ctx.moveTo(meteor.x, meteor.y);
+  createMeteor();
 
-    ctx.lineTo(
-      meteor.x - meteor.vx * 7,
-      meteor.y - meteor.vy * 7
+  meteors.forEach((meteor, index) => {
+    meteor.x -= meteor.speed;
+    meteor.y += meteor.speed;
+    meteor.opacity -= .008;
+
+    const gradient = ctx.createLinearGradient(
+      meteor.x,
+      meteor.y,
+      meteor.x + meteor.length,
+      meteor.y - meteor.length
     );
 
-    ctx.strokeStyle =
-      `rgba(217,189,130,${opacity})`;
+    gradient.addColorStop(0, "rgba(167,139,250,0)");
+    gradient.addColorStop(1, `rgba(232,201,140,${meteor.opacity})`);
 
-    ctx.lineWidth = 1.2;
-
+    ctx.beginPath();
+    ctx.strokeStyle = gradient;
+    ctx.lineWidth = 1.5;
+    ctx.moveTo(meteor.x, meteor.y);
+    ctx.lineTo(
+      meteor.x + meteor.length,
+      meteor.y - meteor.length
+    );
     ctx.stroke();
 
-    meteor.x += meteor.vx;
-    meteor.y += meteor.vy;
-    meteor.life++;
-
-    if (meteor.life >= meteor.maxLife) {
-      meteors.splice(i, 1);
+    if (meteor.opacity <= 0) {
+      meteors.splice(index, 1);
     }
-  }
+  });
+
+  requestAnimationFrame(draw);
 }
 
-/* 07. ANIMACIÓN */
+window.addEventListener("resize", resize);
+resize();
+draw();
 
-function animateUniverse() {
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: .12
+});
 
-  ctx.clearRect(0, 0, screenWidth, screenHeight);
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
 
-  drawStars();
+document.getElementById("blow").addEventListener("click", () => {
+  document.getElementById("surprise").classList.add("show");
 
-  if (!reducedMotion && Math.random() < .012) {
-    createMeteor();
-  }
+  document.getElementById("blow").textContent = "Deseo concedido ✨";
 
-  drawMeteors();
-
-  requestAnimationFrame(animateUniverse);
-}
-
-resizeCanvas();
-animateUniverse();
-
-window.addEventListener("resize", resizeCanvas);
-
-/* 08. BARRA DE PROGRESO */
-
-const progressBar = document.getElementById("progressBar");
-
-function updateProgress() {
-
-  const scrollTop = window.scrollY;
-
-  const scrollHeight =
-    document.documentElement.scrollHeight -
-    window.innerHeight;
-
-  const progress =
-    scrollHeight > 0
-      ? (scrollTop / scrollHeight) * 100
-      : 0;
-
-  progressBar.style.width = progress + "%";
-}
-
-window.addEventListener("scroll", updateProgress);
-
-/* 09. NAVEGACIÓN */
-
-const navbar = document.getElementById("navbar");
-
-function updateNavbar() {
-
-  if (window.scrollY > 60) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-}
-
-window.addEventListener("scroll", updateNavbar);
-
-/* 10. ANIMACIONES AL DESPLAZARSE */
-
-const revealObserver = new IntersectionObserver(
-
-  entries => {
-
-    entries.forEach(entry => {
-
-      if (entry.isIntersecting) {
-
-        entry.target.classList.add("visible");
-
-        revealObserver.unobserve(entry.target);
-
-      }
-
-    });
-
-  },
-
-  {
-    threshold: .12,
-    rootMargin: "0px 0px -30px 0px"
-  }
-
-);
-
-document.querySelectorAll(".reveal, .reveal-left").forEach(
-  element => revealObserver.observe(element)
-);
-
-/* 11. CONFETI */
-
-const confettiColors = [
-  "#d9bd82",
-  "#a18aff",
-  "#f4f0e9",
-  "#b8a3ff",
-  "#d9a9a9",
-  "#9ed6b3"
-];
+  launchConfetti();
+});
 
 function launchConfetti() {
+  const colors = [
+    "#a78bfa",
+    "#e8c98c",
+    "#ffffff",
+    "#d8b4fe"
+  ];
 
-  const total = 100;
-
-  for (let i = 0; i < total; i++) {
-
+  for (let i = 0; i < 100; i++) {
     const piece = document.createElement("div");
 
-    piece.className = "confetti-piece";
-
-    const color =
-      confettiColors[
-        Math.floor(Math.random() * confettiColors.length)
-      ];
-
-    const duration = 2.5 + Math.random() * 3;
-
-    const drift = (Math.random() - .5) * 350;
-
+    piece.style.position = "fixed";
     piece.style.left = Math.random() * 100 + "vw";
-
-    piece.style.background = color;
-
-    piece.style.animationDuration = duration + "s";
-
-    piece.style.setProperty("--drift", drift + "px");
+    piece.style.top = "-15px";
+    piece.style.width = "7px";
+    piece.style.height = "10px";
+    piece.style.background =
+      colors[Math.floor(Math.random() * colors.length)];
+    piece.style.zIndex = "100";
+    piece.style.pointerEvents = "none";
+    piece.style.borderRadius = "2px";
 
     document.body.appendChild(piece);
 
-    setTimeout(() => {
-      piece.remove();
-    }, duration * 1000 + 500);
+    const destination = window.innerHeight + 40;
+    const duration = Math.random() * 2500 + 2000;
+    const drift = (Math.random() - .5) * 250;
 
+    const animation = piece.animate([
+      {
+        transform: "translate(0, 0) rotate(0deg)",
+        opacity: 1
+      },
+      {
+        transform: `translate(${drift}px, ${destination}px) rotate(720deg)`,
+        opacity: .1
+      }
+    ], {
+      duration: duration,
+      easing: "ease-in"
+    });
+
+    animation.onfinish = () => piece.remove();
   }
 }
-
-/* 12. BOTÓN DE CUMPLEAÑOS */
-
-const blowButton = document.getElementById("blowButton");
-const surprise = document.getElementById("surprise");
-const cake = document.getElementById("cake");
-
-let birthdayActivated = false;
-
-blowButton.addEventListener("click", function() {
-
-  if (birthdayActivated) return;
-
-  birthdayActivated = true;
-
-  cake.textContent = "🕯️";
-
-  surprise.style.display = "block";
-
-  this.innerHTML = "<span>Deseo concedido</span> <span>✦</span>";
-
-  this.disabled = true;
-
-  launchConfetti();
-
-  setTimeout(() => {
-
-    surprise.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-
-  }, 200);
-
-});
-
-/* 13. NAVEGACIÓN SUAVE */
-
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-
-  link.addEventListener("click", function(event) {
-
-    const targetId = this.getAttribute("href");
-
-    const target = document.querySelector(targetId);
-
-    if (!target) return;
-
-    event.preventDefault();
-
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
-  });
-
-});
-
-/* 14. COMPROBAR IMÁGENES */
-
-document.querySelectorAll("img").forEach(image => {
-
-  image.addEventListener("error", function() {
-
-    this.setAttribute("data-image-error", "true");
-
-  });
-
-});
-
-/* 15. INICIALIZACIÓN */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  updateProgress();
-  updateNavbar();
-
-});
-
 </script>
 
 </body>
